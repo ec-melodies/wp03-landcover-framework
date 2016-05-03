@@ -1,0 +1,179 @@
+#!/usr/bin/env python
+
+try:
+    import osgeo.gdal as gdal
+    from osgeo.gdalconst import *
+    gdal.UseExceptions()
+except ImportError:
+    print 'GDAL is not installed.'
+    exit(-1)
+
+try:
+    import numpy as np
+except ImportError:
+    print 'NumPy is not installed.'
+    exit(-1)
+
+import sys
+
+from IPython import embed
+
+def GetDimensions(File):
+    dataset = gdal.Open(File, GA_ReadOnly)
+    rows, cols, NumberOfBands = dataset.RasterYSize, dataset.RasterXSize, dataset.RasterCount
+    dataset = None
+
+    return rows, cols, NumberOfBands
+
+def WeightSamples( lc_map, lc_fraction = 1., PercentOfSamplesToKeep = 1. ):
+
+    indices = np.where ( lc_map >= lc_fraction )
+
+    if PercentOfSamplesToKeep < 1.:
+        r_indices = np.random.randint( 0, high = indices[0].shape[0],
+                  size = int( indices[0].shape[0] ) * PercentOfSamplesToKeep )
+
+        indices = ( indices[0][r_indices], indices[1][r_indices] )
+
+    return indices
+
+def GetPurePixelsInWindow( LC_fraction, classes, windowSize = 3 ):
+
+    numberOfClasses = classes.shape[0]
+
+    LC_fractionInWindow = np.zeros( (numberOfClasses, rows, cols), np.float32 )
+
+    # Where the are data
+    indices = np.where( LC_fraction.sum(axis=0) > 0. )
+
+    for i, lc_class in enumerate( classes ) :
+        print "Class", lc_class
+        indices = np.where( LC_fraction[i] == 1 )
+
+        for j in range( len(indices[0]) ):
+            row = indices[0][j]
+            col = indices[1][j]
+            if row > 0 and col > 0 and row < (rows-2) and col < (cols-2):
+                LC_fractionInWindow[i, row, col] = LC_fraction[ i,
+                       row - (windowSize - 2):row + (windowSize -1),
+                       col - (windowSize - 2):col + (windowSize -1)].mean()
+
+    return LC_fractionInWindow
+
+
+LC_fraction_fname = sys.argv[1]
+statsFile = sys.argv[2]
+
+rows, cols, NumberOfBands = GetDimensions( LC_fraction_fname )
+dataset = gdal.Open( LC_fraction_fname , GA_ReadOnly )
+LC_fraction = dataset.ReadAsArray()
+#fillValue = -1
+#LC_fraction = np.ma.masked_where( LC_fraction == fillValue, LC_fraction )
+#np.ma.set_fill_value( LC_fraction, fillValue)
+
+# Get pixel size (should be a squared pixel and size in meters)
+geoTransform = dataset.GetGeoTransform()
+pixelSize = geoTransform[1]
+
+del ( dataset )
+
+# From the stats file extract class number and proportion
+Stats = np.loadtxt( statsFile )
+
+# Get land cover classes
+classes = Stats[:,0].astype(int)
+# Class proportion
+proportion = Stats[:,1]
+numberOfClasses = classes.shape[0]
+
+print "Getting pure pixels in a 3x3 window..."
+purePixelsInWindow = GetPurePixelsInWindow( LC_fraction, classes, windowSize = 3 )
+print "Getting pure pixels in a 5x5 window..."
+purePixelsInWindow5 = GetPurePixelsInWindow( LC_fraction, classes, windowSize = 5 )
+
+# Number of pure pixels ( fraction = 1 ) per class
+NumberPurePixels = np.zeros((numberOfClasses), np.uint16)
+NumberPurePixelsWindow = np.zeros((numberOfClasses), np.uint16)
+
+# Create LC samples map
+Samples = np.zeros((rows,cols), np.uint16)
+
+for i, lc_class in enumerate( classes ):
+
+    #ipshell = embed()
+
+    # Samples for pure individual pixels
+    # LC_fraction , PercentageOfSamplesToKeep
+    #indices_all = WeightSamples( LC_fraction[i], 1., 1. )
+    # Get the total number of pure/representative pixels per class
+    #Samples[ indices_all[0], indices_all[1], 0 ] = lc_class
+    #NumberPurePixels[i] = indices_all[0].shape[0]
+
+    # Samples for pure pixels in a 3x3 window
+    if lc_class == 1 :
+        #indices = np.where( purePixelsInWindow[i] > 0.0 )
+        indices = WeightSamples( LC_fraction[i], 0.95, 1. )
+    #elif lc_class == 2 :
+    #    indices = np.where( purePixelsInWindow[i] >= 0.96 )
+    elif lc_class == 3 :
+        indices = np.where( purePixelsInWindow[i] >= 0.9 )
+    #elif lc_class == 4 :
+    #    indices = np.where( purePixelsInWindow[i] > 0.0 )
+    #elif lc_class == 5 :
+    #    indices = np.where( purePixelsInWindow[i] >= 0.4 )
+    #elif lc_class == 6 :
+    #    indices = WeightSamples( LC_fraction[i], 0.8, 1. )
+    #elif lc_class == 7 :
+    #    indices = np.where( purePixelsInWindow[i] == 1.0 )
+    elif lc_class == 8 :
+        indices = np.where( purePixelsInWindow[i] >= 0.96 )
+    #elif lc_class == 9 :
+    #    indices = WeightSamples( LC_fraction[i], 0.8, 1. )
+    elif lc_class == 12 :
+        indices = WeightSamples( LC_fraction[i], 1.0, 0.7 )
+    #elif lc_class == 13 :
+    #    indices = np.where( purePixelsInWindow5[i] == 1.0 )
+    #elif lc_class == 15 :
+    #    indices = np.where( purePixelsInWindow[i] == 1.0 )
+    #elif lc_class == 16 :
+    #    indices = np.where( purePixelsInWindow[i] == 1.0 )
+    elif lc_class == 19 :
+        indices = np.where( purePixelsInWindow5[i] >= 0.15 )
+    elif lc_class == 20 :
+        indices = np.where( purePixelsInWindow5[i] >= 0.8 )
+    elif lc_class == 22 :
+        indices = WeightSamples( LC_fraction[i], 0.85, 1. )
+    elif lc_class == 23 :
+        indices = WeightSamples( LC_fraction[i], 0.96, 1. )
+    else:
+        #indices = np.where( purePixelsInWindow[i] >= 0.9 )
+        indices = WeightSamples( LC_fraction[i], 1., 1. )
+
+    ## Samples[ indices[0], indices[1], 1 ] = lc_class
+    ## NumberPurePixelsWindow[i] = indices[0].shape[0]
+    Samples[ indices[0], indices[1] ] = lc_class
+    NumberPurePixels[i] = indices[0].shape[0]
+
+TotalNumberPurePixels = NumberPurePixels.sum().astype(float)
+#TotalNumberPurePixelsWindow = NumberPurePixelsWindow.sum().astype(float)
+
+print "Pure individual pixels"
+for i, lc_class in enumerate( classes ):
+    print lc_class, proportion[i], NumberPurePixels[i] / TotalNumberPurePixels, NumberPurePixels[i]
+
+print ""
+print ""
+
+#print "Pure pixels (90%) in a 3x3 window"
+#for i, lc_class in enumerate( classes ):
+#    print lc_class, proportion[i], NumberPurePixelsWindow[i] / TotalNumberPurePixelsWindow, NumberPurePixelsWindow[i]
+
+print "Writing results to a file..."
+format = "ENVI"
+driver = gdal.GetDriverByName(format)
+
+new_dataset = driver.Create('SamplesFromFractions.img', cols, rows, 1, GDT_UInt16)
+new_dataset.GetRasterBand(1).WriteArray(Samples[:,:])
+#new_dataset.GetRasterBand(2).WriteArray(Samples[:,:,1])
+new_dataset = None
+
