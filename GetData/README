@@ -1,0 +1,10 @@
+Get MODIS data based on tile, product and year.
+
+Information about MODIS tiles:
+http://modis-land.gsfc.nasa.gov/MODLAND_grid.html
+
+MODIS products:
+https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table
+
+To get the data run the following script without parameters:
+get_data_from_LPDAAC.csh
