@@ -1,0 +1,87 @@
+#!/bin/env python
+
+import numpy as np
+import glob
+import sys
+
+from IPython import embed
+
+from multiprocessing import Process, Array
+from scipy.stats import pearsonr
+
+try:
+    import sharedmem as shm
+except ImportError:
+    print 'Numpy/SharedMemory is not installed.'
+
+try:
+    import osgeo.gdal as gdal
+    from osgeo.gdalconst import *
+    gdal.UseExceptions()
+except ImportError:
+    print 'GDAL is not installed.'
+    exit(-1)
+
+DataDir = '/home/dn907640/MELODIES/data/MODIS'
+year = sys.argv[1]
+
+print "Getting data..."
+# Get correlations
+/home/dn907640/MELODIES/data/MODIS/processing/mosaics/PearsonR
+
+fname = '%s/processing/mosaics/PearsonR/PearsonR.%s.b1.tif' \
+        % ( DataDir, year )
+f0_b1_corr = gdal.Open( fname ).ReadAsArray()
+f0_b1_corr = f0_b1_corr[0]
+
+fname = '%s/processing/mosaics/PearsonR/PearsonR.%s.b2.tif' \
+        % ( DataDir, year )
+f0_b2_corr = gdal.Open( fname ).ReadAsArray()
+f0_b2_corr = f0_b2_corr[0]
+
+fname = '%s/processing/mosaics/PearsonR/PearsonR.%s.b7.tif' \
+        % ( DataDir, year )
+f0_b7_corr = gdal.Open( fname ).ReadAsArray()
+f0_b7_corr = f0_b7_corr[0]
+
+
+mask = np.ones_like( f0_b1_corr )
+
+threshold = 0.6
+mask = numpy.where( ( f0_b1_corr < threshold ) &
+                    ( f0_b1_corr < threshold ) &
+                    ( f0_b1_corr < threshold ) &
+
+PearsonR = np.zeros( ( rows, cols, 2 ), np.float32 )
+
+print "Computing Pearson R for time series..."
+indices = np.where( mask >= 1 )
+NumberOfPixels = indices[0].shape[0]
+print "Number of pixels to process:", NumberOfPixels
+
+for i in range( NumberOfPixels ):
+    pctPixelsProcessed =  ( i * 100 ) / NumberOfPixels
+    if pctPixelsProcessed % 10 == 0 :
+        print "Pixeles processed:", pctPixelsProcessed, "%"
+
+    row, col = indices[0][i], indices[1][i]
+    f0_profile = f0[:,row,col]
+    f0_prior_profile = f0_prior[:,row,col]
+
+    PearsonRcoef, p_value = pearsonr( f0_profile, f0_prior_profile )    
+    PearsonR[row,col,0] = PearsonRcoef
+    PearsonR[row,col,1] = p_value
+
+drv = gdal.GetDriverByName ("GTiff")
+OutputDir = '%s/processing/mosaics/PearsonR' % ( DataDir ) 
+
+dst_ds = drv.Create ( "%s/PearsonR.%s.b%s.tif" % ( OutputDir, year, band ), \
+    cols, rows, 2, gdal.GDT_Float32, \
+    options=["COMPRESS=LZW", "INTERLEAVE=BAND", "TILED=YES"] )
+
+dst_ds.GetRasterBand( 1 ).WriteArray ( PearsonR[:,:,0] )
+dst_ds.GetRasterBand( 2 ).WriteArray ( PearsonR[:,:,1] )
+
+dst_ds = None
+
+

@@ -1,0 +1,2 @@
+map info = {Sinusoidal, 1, 1, -1111950.519667, 5559752.598333, 463.312716527917, 463.3127165275}
+coordinate system string = {PROJCS["Sinusoidal",GEOGCS["GCS_Unknown datum based upon the custom spheroid",DATUM["D_Not specified (based on custom spheroid)",SPHEROID["Custom_spheroid",6371007.181,0]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]],PROJECTION["Sinusoidal"],PARAMETER["central_meridian",0],PARAMETER["false_easting",0],PARAMETER["false_northing",0],UNIT["Meter",1]]}
