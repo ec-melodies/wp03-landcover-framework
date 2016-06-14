@@ -1,3 +1,11 @@
+"""
+getData.py
+Main script for downloading land cover data files.
+
+Note on testing: test framework uses optional arg to main() to mimic full behaviour but stop short of
+download from the data archive. In addition, command line arg '-test' is used to do a download from
+a dummy website.
+"""
 __author__ = 'Jane'
 
 import sys
@@ -20,7 +28,10 @@ def create_parser(args=None):
     parser.add_argument('-product', '-p', default=const.defs['product'], nargs='?', help="Product name e.g. MOD09GA")
     parser.add_argument('-year', '-y', default=const.defs['year'], nargs='?', help="Year data required", type=int)
     parser.add_argument('-tile', '-t', default=const.defs['tile'], nargs='?', help="Tile required")
-    parser.add_argument('-DoY', '-d', default=const.defs['DoY'], nargs='*', help="Start DoY and optionally also end DoY", type=int)
+    parser.add_argument('-DoY', '-D', default=const.defs['DoY'], nargs='*',
+                        help="Start Day of Year and optionally also end DoY", type=int)
+    parser.add_argument('-dir', '-d', default=const.defs['dir'], nargs='?',
+                        help="Location for downloaded files, default is current directory")
     parser.add_argument('-file', '-f', default=const.defs['file'], nargs='?', help="Name of configuration file to load")
     parser.add_argument('-save', '-s', nargs='?', help="Name of file to save configuration settings")
     parser.add_argument('-test', default=False, nargs='?', help="Run program in test mode, development only")
@@ -68,6 +79,11 @@ def main(args, test_cmds=False):
             except IOError:
                 print("No default config file: parameters must be provided instead. Exiting.")
                 sys.exit(1)
+
+    # if it's been given a destination for data download, ensure this is passed on
+    if args.dir != const.defs['dir']:
+        data_manager.set_directory(args.dir)
+
 
     try:
         if not test_cmds:

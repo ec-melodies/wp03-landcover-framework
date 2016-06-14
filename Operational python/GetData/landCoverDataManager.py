@@ -72,6 +72,16 @@ class LandCoverDataManager:
         except IOError as io_err:
             raise io_err
 
+    def set_directory(self, dir):
+        """
+        Set the location of all downloaded data files.
+        This does not affect the location of configuration files which are
+        assumed to be in the same location as the program.
+        :param dir: directory to store all downloaded files
+        :return:
+        """
+        self.m_Configuration.set_directory(dir)
+
     def read_config(self, config_file):
         """
         Restore data file identifiers from user's configuration file.

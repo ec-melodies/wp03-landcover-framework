@@ -21,7 +21,7 @@ CLASSES
 
 NOT YET IMPLEMENTED
 """
-
+# TODO Probably don't need this class - can be amalgamated into Configuration class
 
 class ConfigFileManager:
     """
@@ -49,6 +49,7 @@ class ConfigFileManager:
         self.m_tile = const.defs['tile']
         self.m_year = const.defs['year']
         self.m_DoY = const.defs['DoY']
+        self.m_data_dir = const.defs['dir']
 
     def load_config_file(self, config_file):
         """
@@ -70,6 +71,7 @@ class ConfigFileManager:
         self.m_tile = config_dict['tile']
         self.m_year = config_dict['year']
         self.m_DoY = config_dict['DoY']
+        self.m_data_dir = config_dict['dir']
 
     def dump_config_file(self, config_file, config_dict):
         """
@@ -88,4 +90,4 @@ class ConfigFileManager:
 
         :return: retrieved settings
         """
-        return self.m_product, self.m_year, self.m_tile, self.m_DoY
+        return self.m_product, self.m_year, self.m_tile, self.m_DoY, self.m_data_dir

@@ -57,7 +57,7 @@ class WebpageAccess:
         """
 
         # Because the test website is slightly different, need to amend address
-        # 'http://www.resc.rdg.ac.uk/training/course_instructions.php/,the file to download>' is wrong!
+        # 'http://www.resc.rdg.ac.uk/training/course_instructions.php/<the file to download>' is wrong!
         if archive_address.endswith('.php'):
             archive_address = archive_address[:-len('/course_instructions.php')]
 

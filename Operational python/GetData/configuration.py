@@ -10,6 +10,7 @@
 
 import datetime
 import constants as const
+import os
 import configFileManager
 
 """
@@ -68,6 +69,7 @@ class Configuration:
         self.m_tile = const.defs['tile']
         self.m_year = const.defs['year']
         self.m_DoY = const.defs['DoY']
+        self.m_data_store = const.defs['dir']
         self.m_end_day = 0
         self.m_day_counter = 0
 
@@ -86,6 +88,7 @@ class Configuration:
             self.m_ConfigFileManager.load_config_file(config_file)  # this will raise exception if no data is available
             params = self.m_ConfigFileManager.get_config()
             self.set_args(params[0], params[1], params[2], params[3])
+            self.set_directory(params[4])
         except IOError:
             # if there is no saved config, need to tell the caller
             raise
@@ -99,7 +102,8 @@ class Configuration:
         config_dict = {'product': self.m_product,
                        'tile': self.m_tile,
                        'year': self.m_year,
-                       'DoY': self.m_DoY}
+                       'DoY': self.m_DoY,
+                       'dir': self.m_data_store}
         self.m_ConfigFileManager.dump_config_file(config_file, config_dict)
 
     def get_tile(self):
@@ -174,6 +178,13 @@ class Configuration:
             self.m_data_dir = "MOTA"
             self.m_time_step = 8
 
+    def set_directory(self, dir):
+        # ensure path separators are standardised
+        self.m_data_store = str(dir).replace("\\", os.path.sep) + os.path.sep
+        # and that the directory is made
+        if not os.path.exists(self.m_data_store):
+            os.makedirs(self.m_data_store)
+
     def create_local_filenames(self):
         """
         Construct name for retrieved files.
@@ -183,8 +194,14 @@ class Configuration:
         :return: file names for data and xml
         """
         local_filenames = []
-        local_filename = (self.m_product + '.A' + str(self.m_year) + '{0:03d}'.format(self.m_day_counter) +
+        local_filename = ''
+        if str(self.m_data_store) != "":
+            # prepend path to filename
+            local_filename = self.m_data_store
+
+        local_filename += (self.m_product + '.A' + str(self.m_year) + '{0:03d}'.format(self.m_day_counter) +
                           '.' + self.m_tile + '.' + self.m_version + '.hdf')
+
         local_filenames.append(local_filename)
         local_filename += str('.xml')
         local_filenames.append(local_filename)
