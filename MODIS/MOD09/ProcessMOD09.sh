@@ -4,7 +4,7 @@ source $HOME/.bashrc
 
 echo $#
 
-FUNC=MOD09_Masking_By_QA_KernelCalc.sh
+FUNC=ProcessMOD09.sh
 echo ""
 echo ${FUNC}: Checking command line arguments
 
