@@ -9,6 +9,7 @@
 #######################################################
 
 import datetime
+import constants as const
 import configFileManager
 
 """
@@ -53,6 +54,8 @@ class Configuration:
 
     """
 
+
+
     def __init__(self, mngr):
         """
         Initialise all attributes to empty values, keep pointer to the configFileManager.
@@ -60,14 +63,15 @@ class Configuration:
         :return: no return
         """
         self.m_ConfigFileManager = mngr
-        self.m_product = ""
-        self.m_tile = ""
-        self.m_year = ""
-        self.m_DoY = []
+        self.m_config = const.defs['file']
+        self.m_product = const.defs['product']
+        self.m_tile = const.defs['tile']
+        self.m_year = const.defs['year']
+        self.m_DoY = const.defs['DoY']
         self.m_end_day = 0
         self.m_day_counter = 0
 
-    def get_config(self):
+    def read_config(self, config_file):
         """
         Reads in saved configuration details.
 
@@ -75,20 +79,32 @@ class Configuration:
         attributes.
 
         :return: no return
-        :raise: IOError if the default config. file is not found.
+        :raise: IOError if the config. file is not found.
         """
         try:
-            self.m_ConfigFileManager.load_XML()  # this will raise exception if no data is available
+            self.m_config = config_file
+            self.m_ConfigFileManager.load_config_file(config_file)  # this will raise exception if no data is available
             params = self.m_ConfigFileManager.get_config()
             self.set_args(params[0], params[1], params[2], params[3])
         except IOError:
             # if there is no saved config, need to tell the caller
             raise
-        pass
+
+    def write_config(self, config_file):
+        """
+
+        :param config_file:
+        :return:
+        """
+        config_dict = {'product': self.m_product,
+                       'tile': self.m_tile,
+                       'year': self.m_year,
+                       'DoY': self.m_DoY}
+        self.m_ConfigFileManager.dump_config_file(config_file, config_dict)
 
     def get_tile(self):
         """
-        Get instance property: time name
+        Get instance property: tile name
 
         :return: tile name
         """
@@ -99,18 +115,42 @@ class Configuration:
         Set instance properties for retrieving required data file.
 
         Data archive is at https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table.
-        If an end day of year is not specified, 365 is used.
+        If an end day of year is not specified, 365 is used. If any of the arguments is set to its
+        default invalid value, the configuration file will be used to provide settings; if none provided,
+        the default file will be loaded.
 
         :param product: MOD* and MYD* supported
         :param year: valid year in data archive
         :param tile: valid tile in data archive
         :param DoY: starting day of year, and optionally also end
+        :raise IOError: if insufficient args and no config file to provide remainder
         :return: no return
         """
-        self.m_product = product
-        self.m_tile = tile
-        self.m_year = year
-        self.m_DoY = DoY
+        # Read in the config file if any of these args is still a default (i.e. not set)
+        # The config file will either be the default or will have been set to a new one
+        # if the user has chosen to over-ride one or two args only.
+        # However, if it's been set, its contents have already been loaded so we don't need to do it again.
+        if ((product == const.defs['product']) or (year == const.defs['year']) or
+                (tile == const.defs['tile']) or not DoY) and self.m_config == const.defs['file']:
+            try:
+                self.m_ConfigFileManager.load_config_file(self.m_config)
+                params = self.m_ConfigFileManager.get_config()
+            except IOError:
+                raise
+
+        # Then over-ride if non-default
+        if product != const.defs['product']: self.m_product = product
+        else: self.m_product = params[0]
+
+        if year != const.defs['year']: self.m_year = year
+        else: self.m_year = params[1]
+
+        if tile != const.defs['tile']: self.m_tile = tile
+        else: self.m_tile = params[2]
+
+        if DoY != const.defs['DoY']: self.m_DoY = DoY
+        else: self.m_DoY = params[3]
+
         self.m_day_counter = self.m_DoY[0]
         if len(self.m_DoY) == 2:
             self.m_end_day = self.m_DoY[1]
@@ -134,17 +174,22 @@ class Configuration:
             self.m_data_dir = "MOTA"
             self.m_time_step = 8
 
-    def create_filename(self):
+    def create_local_filenames(self):
         """
-        Construct name for retrieved file.
+        Construct name for retrieved files.
 
-        Uses settings/parameters which define the file to be downloaded.
+        Uses settings/parameters which define the file to be downloaded. Creates names for data and xml files.
 
-        :return: file name
+        :return: file names for data and xml
         """
-        filename = (self.m_product + '.A' + str(self.m_year) + '{0:03d}'.format(self.m_day_counter) +
-                    '.' + self.m_tile + '.' + self.m_version + '*hdf')
-        return filename
+        local_filenames = []
+        local_filename = (self.m_product + '.A' + str(self.m_year) + '{0:03d}'.format(self.m_day_counter) +
+                          '.' + self.m_tile + '.' + self.m_version + '.hdf')
+        local_filenames.append(local_filename)
+        local_filename += str('.xml')
+        local_filenames.append(local_filename)
+
+        return local_filenames
 
     def is_valid_day(self):
         """
@@ -152,6 +197,7 @@ class Configuration:
 
         :return: True if day is within range, False otherwise
         """
+        print ("Day counter {}".format(self.m_day_counter))
         if self.m_day_counter <= self.m_end_day:
             return True
         else:

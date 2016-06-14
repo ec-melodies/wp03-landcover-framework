@@ -36,9 +36,13 @@ class WebpageAccess:
         Set up a temporary file to contain web page text
         :return: no return
         """
-        self.m_web_text_file_name = 'output.txt'
+        self.m_web_text_file_name = 'scrape.txt'
 
-    def retrieve_data_files(self, address, tile, filename):
+    def scrape_web_page(self, address):
+        # Get the file list from the pre-defined web page and put into temporary file
+        self.__download_page(address, self.m_web_text_file_name)
+
+    def retrieve_data_files(self, archive_address, tile, local_filenames):
         """
         Download required data from archive website.
 
@@ -46,21 +50,29 @@ class WebpageAccess:
         + the tile must be valid in that it appears in the filename of available data
         + the destination filename will uniquely identify the data.
 
-        :param address: archive web address
+        :param archive_address: archive web address i.e. the one scraped for details of files
         :param tile: required tile
         :param filename: destination local file name
         :return: no return
         """
-        # Get the file list from the pre-defined web page and put into temporary file
-        self.__download_page(address, self.m_web_text_file_name)
+
+        # Because the test website is slightly different, need to amend address
+        # 'http://www.resc.rdg.ac.uk/training/course_instructions.php/,the file to download>' is wrong!
+        if archive_address.endswith('.php'):
+            archive_address = archive_address[:-len('/course_instructions.php')]
+
         # Scan the list for the right entry
-        file_to_download = self.__find_file_link(tile)
-        # Download the data
-        if file_to_download is not None:
-            # get file
-            self.__download_page(file_to_download, filename)
+        files_to_download = self.__find_file_links(tile, archive_address)
+
+        # Download the data and xml
+        if len(files_to_download) >= 1:
+            # get files
+            local_file_ref = 0
+            for target in files_to_download:
+                self.__download_page(target, local_filenames[local_file_ref])
+                local_file_ref += 1
         else:
-            # log if no file available
+            # TODO log if no file available
             pass
 
     @staticmethod
@@ -74,32 +86,34 @@ class WebpageAccess:
         """
         try:
             response = urllib2.urlopen(address)
-            with open(destination_file,'w') as f:
+            with open(destination_file, 'w') as f:
                 f.write(response.read())
-            f.close()
         except urllib2.URLError as URL_err:
-            print ("Problem getting web page {}".format(URL_err.reason))
+            print ("Problem getting web page data {}".format(URL_err.reason))
 
-    def __find_file_link(self, tile):
+    def __find_file_links(self, tile, archive_address):
         """
         Sub-sample file list for those conforming to search criteria.
 
         Webpage has already been selected based on product and date, so
         we are just looking for the correct tile, and the string must
-        also contain both 'http' and '.hdf'
+        also contain '.hdf' so will find two matches: one data, one xml.
 
         :param tile:
-        :return: link name or None
+        :param archive_address: the parent archive web address
+        :return: link names or empty array
         """
 
-        retval = None
-        search_terms = ['http', '.hdf', tile]
+        retval = []
+        search_terms = ['.hdf', tile]
         with open(self.m_web_text_file_name) as f:
             for line in f:
                 if all(x in line for x in search_terms):
-                    #  print (line)
-                    #  print line.split()[1]
-                    retval = line.split()[1]
+                    link = line.split()[5].split('\"')[1]
+                    # this gives us the relative path, need to prepend http:\\ parent part
+                    retval.append(archive_address + '/' + link)
+                    if len(retval) == 2: # don't continue to search the text once the matches are found
+                        break
         f.close()
         return retval
 

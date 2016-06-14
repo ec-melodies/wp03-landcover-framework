@@ -8,7 +8,8 @@
 # 
 #######################################################
 
-import lxml
+import json
+import constants as const
 
 """
 NAME
@@ -24,13 +25,13 @@ NOT YET IMPLEMENTED
 
 class ConfigFileManager:
     """
-    Class to set the configuration from a saved file possibly in XML.
+    Class to get and set the configuration from a saved file in JSON format.
 
     Methods defined here:
-        load_XML(...)
+        load_config_file(...)
             Read in saved configuration info.
 
-        dump_XML(...)
+        dump_config_file(...)
             Write configuration details to file.
 
         get_config(...)
@@ -44,39 +45,47 @@ class ConfigFileManager:
 
         :return: no return
         """
-        self.m_product = ""
-        self.m_tile = ""
-        self.m_year = ""
-        self.m_DoY = []
+        self.m_product = const.defs['product']
+        self.m_tile = const.defs['tile']
+        self.m_year = const.defs['year']
+        self.m_DoY = const.defs['DoY']
 
-    def load_XML(self):
+    def load_config_file(self, config_file):
         """
         Read in saved configuration info.
         If there isn't any, then pass exception up to caller.
         :return: no return
         """
+        # self.m_config = config_file
         try:
-            open('land_cover_config.xml')
+            with open(config_file, 'r') as infile:
+                config_dict = json.load(infile)
             # if it opens, check whether it's complete
-            # set the member variables
-        except:
-            raise
-        else:
-            # read in config
-            pass
+            if len(config_dict) != const.json_args:
+                raise EOFError
+        except IOError as io_err:
+            raise io_err
 
-    def dump_XML(self):
+        self.m_product = config_dict['product']
+        self.m_tile = config_dict['tile']
+        self.m_year = config_dict['year']
+        self.m_DoY = config_dict['DoY']
+
+    def dump_config_file(self, config_file, config_dict):
         """
         Write configuration details to file.
         Can be used by Configuration class to save current details.
 
+        :param config_file:
+        :param config_dict:
         :return: no return
         """
-        pass
+        with open(config_file, 'w') as outfile:
+            json.dump(config_dict, outfile)
 
     def get_config(self):
         """
 
         :return: retrieved settings
         """
-        return self.m_product, self.m_tile, self.m_year, self.m_DoY
+        return self.m_product, self.m_year, self.m_tile, self.m_DoY
