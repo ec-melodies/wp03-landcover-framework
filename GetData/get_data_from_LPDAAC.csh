@@ -5,7 +5,7 @@ set FUNC = get_data_from_LPDAAC.csh
 if ($#argv != 4) then
   echo ""
   echo Usage: $FUNC PRODUCT YEAR TILE STARTING_DOY
-  echo "PRODUCT must be the MODIS shortname product, check: https://lpdaac.usgs.gov/products/modis_products_table"
+  echo "PRODUCT must be the MODIS shortname product, check: https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table"
   echo "To get the MODIS-Terra daily surface reflectance product for the whole year 2011 for tile h18v04:"
   echo "$FUNC MOD09GA 2011 h18v04 1"
   echo "To get  the same data  but from DoY 46:"
