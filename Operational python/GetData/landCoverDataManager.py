@@ -115,7 +115,8 @@ class LandCoverDataManager:
         """
         # set up the correct web page dependent on mode
         if test_mode:
-            parent_web_page = "http://www.resc.rdg.ac.uk/training/course_instructions.php"
+            parent_web_page = "http://ec-melodies.github.io/wp03-landcover-framework/"
+            #parent_web_page = "http://www.resc.rdg.ac.uk/training/course_instructions.php"
         else:
             parent_web_page = self.m_Configuration.create_URL()
 

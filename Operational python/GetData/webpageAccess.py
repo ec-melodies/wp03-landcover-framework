@@ -56,11 +56,13 @@ class WebpageAccess:
         :return: no return
         """
 
-        # Because the test website is slightly different, need to amend address
-        # 'http://www.resc.rdg.ac.uk/training/course_instructions.php/<the file to download>' is wrong!
-        if archive_address.endswith('.php'):
-            archive_address = archive_address[:-len('/course_instructions.php')]
-
+        # # Because the test website is slightly different, need to amend address by stripping page id from it
+        # # 'http://www.resc.rdg.ac.uk/training/course_instructions.php/<the file to download>' is wrong!
+        #if archive_address.endswith('.php'):
+        #    archive_address = archive_address[:-len('/course_instructions.php')]
+        if archive_address.find('git') != -1:
+            archive_address =\
+                'https://raw.githubusercontent.com/ec-melodies/wp03-landcover-framework/gh-pages'
         # Scan the list for the right entry
         files_to_download = self.__find_file_links(tile, archive_address)
 

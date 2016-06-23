@@ -9,9 +9,35 @@ a dummy website.
 __author__ = 'Jane'
 
 import sys
+import datetime as dt
+import pytz
+import calendar
 import argparse
 import landCoverDataManager
 import constants as const
+
+def is_website_live():
+    """
+    Check the day and time.
+    The https://lpdaac.usgs.gov/data_access/data_pool site declares site downtime as
+    every Wednesday 0800-1200 Central Time for weekly maintenance.
+    :return: True if site is up and operational.
+    """
+    now_day = dt.date.today()
+    # firstly check if it's a Wednesday
+    if 'Wednesday' == calendar.day_name[now_day.weekday()]:
+        # check the time, allowing for the time zone
+        now = dt.datetime.now(pytz.timezone('Europe/London'))
+        # pytz.all_timezones gives list of valid strings
+        central = pytz.timezone('US/Central')
+        start = dt.time(8, 0, 0, 0, central)
+        end = dt.time(12, 0, 0, 0, central)
+        now_converted = now.astimezone(central)
+        if start <= now_converted <= end:
+            return False
+    else:
+        return True
+
 
 def create_parser(args=None):
     """
@@ -101,5 +127,8 @@ def main(args, test_cmds=False):
     return test_cmds
 
 if __name__ == '__main__':
-    parse_args = create_parser()
-    main(parse_args)
+    if is_website_live():
+        parse_args = create_parser()
+        main(parse_args)
+    else:
+        print ("LP DAAC website unavailable during its maintenance. Please try again later.")
