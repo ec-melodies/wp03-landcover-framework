@@ -17,3 +17,5 @@ defs = {'all': [],
 # This is the number of the above settings which are stored in the JSON configuration file:
 # current;y product, tile, year, DoY and dir
 json_args = 5
+
+local_time_zone = 'Europe/London'

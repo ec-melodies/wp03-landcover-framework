@@ -22,6 +22,7 @@ CLASSES
     Configuration
 """
 
+import LPDAAC_website as src
 
 class Configuration:
     """
@@ -167,6 +168,7 @@ class Configuration:
         Set instance properties for constants.
         :return: no return
         """
+        # TODO remove these horrible hard-coded values
         self.m_version = "005"
         if str(self.m_product).startswith('MOD'):
             self.m_data_dir = "MOLT"
@@ -198,7 +200,7 @@ class Configuration:
         if str(self.m_data_store) != "":
             # prepend path to filename
             local_filename = self.m_data_store
-
+        # TODO remove these horrible hard-coded values too
         local_filename += (self.m_product + '.A' + str(self.m_year) + '{0:03d}'.format(self.m_day_counter) +
                           '.' + self.m_tile + '.' + self.m_version + '.hdf')
 
@@ -239,7 +241,7 @@ class Configuration:
         # convert current DoY into a date
         date = datetime.datetime(self.m_year, 1, 1) + datetime.timedelta(self.m_day_counter - 1)
         # create string
-        web_string = ('http://e4ftl01.cr.usgs.gov/' + self.m_data_dir + '/' + self.m_product +
+        web_string = (src.data_addr_root + self.m_data_dir + '/' + self.m_product +
                       '.' + self.m_version + '/' + date.strftime('%Y.%m.%d'))
         return web_string
 

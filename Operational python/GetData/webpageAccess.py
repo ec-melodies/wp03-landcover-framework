@@ -17,6 +17,8 @@ CLASSES
     WebpageAccess
 """
 
+import LPDAAC_website as src
+
 class WebpageAccess:
     """
     Class to retrieve data from archive.
@@ -107,44 +109,14 @@ class WebpageAccess:
         """
 
         retval = []
-        search_terms = ['.hdf', tile]
+        search_terms = [src.data_file_ext, tile]
         with open(self.m_web_text_file_name) as f:
             for line in f:
                 if all(x in line for x in search_terms):
-                    link = line.split()[5].split('\"')[1]
+                    link = line.split()[src.line_split_1].split('\"')[src.line_split_2]
                     # this gives us the relative path, need to prepend http:\\ parent part
                     retval.append(archive_address + '/' + link)
-                    if len(retval) == 2: # don't continue to search the text once the matches are found
+                    if len(retval) == src.data_files_to_retrieve: # don't continue to search the text once the matches are found
                         break
         f.close()
         return retval
-
-
-#
-# with open("filename.txt") as f:
-#     for line in f:
-#         if "Smith" in line:
-#              print line
-#
-# # Open file for reading
-#         fo = open(search_path + fname)
-#
-#         # Read the first line from the file
-#         line = fo.readline()
-#
-#         # Initialize counter for line number
-#         line_no = 1
-#
-#         # Loop until EOF
-#         while line != '' :
-#                 # Search for string in line
-#                 index = line.find(search_str)
-#
-# search_str = "hello"
-# search_file = open("myfile", "r")
-#
-# for line in search_file:
-#     if line.strip().find(search_str) != -1:
-#         print line
-#
-# search_file.close()
