@@ -10,8 +10,9 @@
 
 import datetime
 import os
+import json
 
-from src import constants as const
+import constants as const
 import LPDAAC_website as src
 
 """
@@ -78,8 +79,11 @@ class Configuration:
         self.m_data_store = const.defs['dir']
         self.m_end_day = 0
         self.m_day_counter = 0
+        self.m_data_dir = ""
+        self.m_version = ""
+        self.m_time_step = 0
 
-    def read_config(self, config_file=self.m_config):
+    def read_config(self, config_file = const.defs['file']):
         """
         Reads in saved configuration details.
 
@@ -127,11 +131,12 @@ class Configuration:
             json.dump(config_dict, outfile)
 
     def set_directory(self, dir):
-        # ensure path separators are standardised
-        self.m_data_store = str(dir).replace("\\", os.path.sep) + os.path.sep
-        # and that the directory is made
-        if not os.path.exists(self.m_data_store):
-            os.makedirs(self.m_data_store)
+        if str(dir) != '':
+            # ensure path separators are standardised
+            self.m_data_store = str(dir).replace("\\", os.path.sep) + os.path.sep
+            # and that the directory is made
+            if not os.path.exists(self.m_data_store):
+                os.makedirs(self.m_data_store)
 
     def get_tile(self):
         """
@@ -140,6 +145,12 @@ class Configuration:
         :return: tile name
         """
         return self.m_tile
+
+    def get_user(self):
+        return self.m_user
+
+    def get_passwd(self):
+        return self.m_passwd
 
     def set_args(self, product, year, tile, DoY, user, passwd):
         """
@@ -199,10 +210,10 @@ class Configuration:
                 self.m_day_counter = int(self.m_DoY[0])
                 self.m_end_day = 365
 
-        if user == const.defs['user']:
+        if user != const.defs['user']:
             self.m_user = user
 
-        if passwd == const.defs['passwd']:
+        if passwd != const.defs['passwd']:
             self.m_passwd = passwd
 
         self.__set_constants()
@@ -281,23 +292,3 @@ class Configuration:
         web_string = (src.data_addr_root + self.m_data_dir + '/' + self.m_product +
                       '.' + self.m_version + '/' + date.strftime('%Y.%m.%d'))
         return web_string
-
-
-
-
-
-#    def set_time_period(self):
-#         """
-#
-#         :return:
-#         """
-#         """Note Python datetime class can turn day of year into date:
-#         > datetime.datetime(year, 1, 1) + datetime.timedelta(days - 1)
-#         Then datetime methods to output in whatever format required.  or
-#         > import datetime
-#         > datetime.datetime.strptime('2010 120', '%Y %j')
-#             datetime.datetime(2010, 4, 30, 0, 0)
-#         > _.strftime('%d/%m/%Y')
-#             '30/04/2010'
-#         """
-#        pass

@@ -7,7 +7,9 @@
 # Original author: Jane
 # 
 #######################################################
-import urllib2
+import urllib2, base64
+import os
+
 """
 NAME
     webpageAccess - implementation of class
@@ -42,6 +44,7 @@ class WebpageAccess:
         """
         self.m_web_text_file_name = 'scrape.txt'
         self.m_config = None
+        self.m_test_mode = 'No'
 
     def set_config_object(self, config):
         """
@@ -57,11 +60,12 @@ class WebpageAccess:
         """
         Retrieves all data files specified.
 
-        :param test_mode: controls webpage accessed for testing purposes.
+        :param test_mode: controls webpage access for testing purposes.
         :return: no return
         """
         # set up the correct web page dependent on mode
-        if test_mode:
+        self.m_test_mode = test_mode
+        if test_mode == 'Git':
             parent_web_page = "http://ec-melodies.github.io/wp03-landcover-framework/"
         else:
             parent_web_page = self.m_config.create_URL()
@@ -104,12 +108,7 @@ class WebpageAccess:
         :param filename: destination local file name
         :return: no return
         """
-
-        # # Because the test website is slightly different, need to amend address by stripping page id from it
-        # # 'http://www.resc.rdg.ac.uk/training/course_instructions.php/<the file to download>' is wrong!
-        #if archive_address.endswith('.php'):
-        #    archive_address = archive_address[:-len('/course_instructions.php')]
-        if archive_address.find('git') != -1:
+        if archive_address.find('git') != -1:  # could test self.m_test_mode instead...
             archive_address =\
                 'https://raw.githubusercontent.com/ec-melodies/wp03-landcover-framework/gh-pages'
         # Scan the list for the right entry
@@ -126,8 +125,7 @@ class WebpageAccess:
             # TODO log if no file available
             pass
 
-    @staticmethod
-    def __download_page(address, destination_file):
+    def __download_page(self, address, destination_file):
         """
         Open the URL and read contents of the web page into the destination file.
 
@@ -135,10 +133,21 @@ class WebpageAccess:
         :param destination_file: target local file
         :return: no return
         """
+
         try:
-            response = urllib2.urlopen(address)
+            if self.m_test_mode != 'Git':
+                request = urllib2.Request(address)
+                base64string = base64.b64encode('%s:%s' % (self.m_config.get_user(), self.m_config.get_passwd()))
+                request.add_header("Authorization", "Basic %s" % base64string)
+                response = urllib2.urlopen(request)
+            else:
+                response = urllib2.urlopen(address)
+
             with open(destination_file, 'w') as f:
-                f.write(response.read())
+                if self.m_test_mode == 'Real' and destination_file != self.m_web_text_file_name:
+                    f.write(response.read(1000))
+                else:
+                    f.write(response.read())
         except urllib2.URLError as URL_err:
             print ("Problem getting web page data {}".format(URL_err.reason))
 

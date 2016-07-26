@@ -61,15 +61,15 @@ def create_parser(args=None):
     parser.add_argument('-tile', '-t', default=cfg_const.defs['tile'], nargs='?', help="Tile required")
     parser.add_argument('-DoY', '-D', default=cfg_const.defs['DoY'], nargs='*',
                         help="Start Day of Year and optionally also end DoY", type=int)
-    parser.add_argument('-user', '-u', default=cfg_const.defs['user'], nargs='*',
+    parser.add_argument('-user', '-u', default=cfg_const.defs['user'], nargs='?',
                         help="Username to log into FTP site")
-    parser.add_argument('-passwd', '-w', default=cfg_const.defs['passwd'], nargs='*',
+    parser.add_argument('-passwd', '-w', default=cfg_const.defs['passwd'], nargs='?',
                         help="Password to log into FTP site")
     parser.add_argument('-dir', '-d', default=cfg_const.defs['dir'], nargs='?',
                         help="Location for downloaded files, default is current directory")
     parser.add_argument('-file', '-f', default=cfg_const.defs['file'], nargs='?', help="Name of configuration file to load")
     parser.add_argument('-save', '-s', nargs='?', help="Name of file to save configuration settings")
-    parser.add_argument('-test', default=False, nargs='?', help="Run program in test mode, development only")
+    parser.add_argument('-test', default='No', nargs='?', help="Run program in test mode, development only")
     return parser.parse_args(args=args)
 
 def main(args, testing_args=False):
