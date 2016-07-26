@@ -9,9 +9,10 @@
 #######################################################
 
 import datetime
-import constants as const
 import os
-import configFileManager
+
+from src import constants as const
+import LPDAAC_website as src
 
 """
 NAME
@@ -21,8 +22,6 @@ FILE
 CLASSES
     Configuration
 """
-
-import LPDAAC_website as src
 
 class Configuration:
     """
@@ -70,6 +69,8 @@ class Configuration:
         self.m_tile = const.defs['tile']
         self.m_year = const.defs['year']
         self.m_DoY = const.defs['DoY']
+        self.m_user = const.defs['user']
+        self.m_passwd = const.defs['passwd']
         self.m_data_store = const.defs['dir']
         self.m_end_day = 0
         self.m_day_counter = 0
@@ -104,6 +105,8 @@ class Configuration:
                        'tile': self.m_tile,
                        'year': self.m_year,
                        'DoY': self.m_DoY,
+                       'user': self.m_user,
+                       'passwd': self.m_passwd,
                        'dir': self.m_data_store}
         self.m_ConfigFileManager.dump_config_file(config_file, config_dict)
 
@@ -115,7 +118,7 @@ class Configuration:
         """
         return self.m_tile
 
-    def set_args(self, product, year, tile, DoY):
+    def set_args(self, product, year, tile, DoY, user, passwd):
         """
         Set instance properties for retrieving required data file.
 
@@ -124,19 +127,23 @@ class Configuration:
         default invalid value, the configuration file will be used to provide settings; if none provided,
         the default file will be loaded.
 
-        :param product: MOD* and MYD* supported
-        :param year: valid year in data archive
-        :param tile: valid tile in data archive
-        :param DoY: starting day of year, and optionally also end
+        :param product: MOD* and MYD* supported (str)
+        :param year: valid year in data archive (str)
+        :param tile: valid tile in data archive (str)
+        :param DoY: starting day of year (str), and optionally also end (str list)
+        :param user: FTP site user login
+        :param passwd: FTP site user password
         :raise IOError: if insufficient args and no config file to provide remainder
         :return: no return
         """
-        # Read in the config file if any of these args is still a default (i.e. not set)
-        # The config file will either be the default or will have been set to a new one
-        # if the user has chosen to over-ride one or two args only.
+        # Read in the config file if any of these args is still a default (i.e. not set).
+        # The config file will either be the default or will have been set to a new one if the user
+        # has chosen to over-ride one or two args only.
         # However, if it's been set, its contents have already been loaded so we don't need to do it again.
         if ((product == const.defs['product']) or (year == const.defs['year']) or
-                (tile == const.defs['tile']) or not DoY) and self.m_config == const.defs['file']:
+                (tile == const.defs['tile']) or not DoY
+                or (user == const.defs['user']) or (passwd == const.defs['passwd'])
+                ) and self.m_config == const.defs['file']:
             try:
                 self.m_ConfigFileManager.load_config_file(self.m_config)
                 params = self.m_ConfigFileManager.get_config()
@@ -144,23 +151,46 @@ class Configuration:
                 raise
 
         # Then over-ride if non-default
-        if product != const.defs['product']: self.m_product = product
-        else: self.m_product = params[0]
-
-        if year != const.defs['year']: self.m_year = year
-        else: self.m_year = params[1]
-
-        if tile != const.defs['tile']: self.m_tile = tile
-        else: self.m_tile = params[2]
-
-        if DoY != const.defs['DoY']: self.m_DoY = DoY
-        else: self.m_DoY = params[3]
-
-        self.m_day_counter = self.m_DoY[0]
-        if len(self.m_DoY) == 2:
-            self.m_end_day = self.m_DoY[1]
+        if product != const.defs['product']:
+            self.m_product = product
         else:
+            self.m_product = params[0]
+
+        if year != const.defs['year']:
+            self.m_year = int(year)
+        else:
+            self.m_year = int(params[1])
+
+        if tile != const.defs['tile']:
+            self.m_tile = tile
+        else:
+            self.m_tile = params[2]
+
+        if DoY != const.defs['DoY']:
+            self.m_DoY = DoY
+        else:
+            self.m_DoY = params[3]
+        # DoY may be a single value (as str) or a 2 element list of values (as str)
+        if type(self.m_DoY) is str:
+            self.m_day_counter = int(self.m_DoY)
             self.m_end_day = 365
+        elif type(DoY) is list:
+            if len(DoY)==2:
+                self.m_day_counter = int(self.m_DoY[0])
+                self.m_end_day = int(self.m_DoY[1])
+            else:
+                self.m_day_counter = int(self.m_DoY[0])
+                self.m_end_day = 365
+
+        if user == const.defs['user']:
+            self.m_user = user
+        else:
+            self.m_user = params[4]
+        if passwd == const.defs['passwd']:
+            self.m_passwd = passwd
+        else:
+            self.m_passwd = params[5]
+
         self.__set_constants()
 
     def __set_constants(self):

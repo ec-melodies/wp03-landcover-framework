@@ -9,7 +9,8 @@
 #######################################################
 
 import json
-import constants as const
+
+from src import constants as const
 
 """
 NAME
@@ -19,7 +20,6 @@ FILE
 CLASSES
     ConfigFileManager
 
-NOT YET IMPLEMENTED
 """
 # TODO Probably don't need this class - can be amalgamated into Configuration class
 
@@ -50,6 +50,9 @@ class ConfigFileManager:
         self.m_year = const.defs['year']
         self.m_DoY = const.defs['DoY']
         self.m_data_dir = const.defs['dir']
+        self.m_user = const.defs['user']
+        self.m_passwd = const.defs['passwd']
+
 
     def load_config_file(self, config_file):
         """
@@ -72,6 +75,8 @@ class ConfigFileManager:
         self.m_year = config_dict['year']
         self.m_DoY = config_dict['DoY']
         self.m_data_dir = config_dict['dir']
+        self.m_user = config_dict['user']
+        self.m_passwd = config_dict['passwd']
 
     def dump_config_file(self, config_file, config_dict):
         """
@@ -90,4 +95,4 @@ class ConfigFileManager:
 
         :return: retrieved settings
         """
-        return self.m_product, self.m_year, self.m_tile, self.m_DoY, self.m_data_dir
+        return self.m_product, self.m_year, self.m_tile, self.m_DoY, self.m_data_dir, self.m_user, self.m_passwd

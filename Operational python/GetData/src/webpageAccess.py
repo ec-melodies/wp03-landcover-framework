@@ -17,7 +17,8 @@ CLASSES
     WebpageAccess
 """
 
-import LPDAAC_website as src
+from GetData.src import LPDAAC_website as src
+
 
 class WebpageAccess:
     """

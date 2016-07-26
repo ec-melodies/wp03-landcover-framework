@@ -9,8 +9,8 @@
 #######################################################
 
 import os
-import configFileManager
-import configuration
+
+from src import configFileManager, configuration
 import webpageAccess
 
 """
@@ -54,21 +54,23 @@ class LandCoverDataManager:
         self.m_Configuration = configuration.Configuration(self.m_ConfigFileManager)
         self.m_WebpageAccess = webpageAccess.WebpageAccess()
 
-    def set_args(self, product, year, tile, doy):
+    def set_args(self, product, year, tile, doy, user, passwd):
         """
         Set up the data file identifiers: properties for retrieving required data file.
 
         This is delegated to the Configuration class.
 
-        :param product: MOD* and MYD* supported
-        :param year: valid year in data archive
-        :param tile: valid tile in data archive
-        :param doy: starting day of year, and optionally also end
+        :param product: MOD* and MYD* supported (str)
+        :param year: valid year in data archive (str)
+        :param tile: valid tile in data archive (str)
+        :param doy: starting day of year (str), and optionally also end (str list)
+        :param user: FTP site user login
+        :param passwd: FTP site user password
         :raise IOError: if insufficient args and no config file to provide remainder
         :return: no return
         """
         try:
-            self.m_Configuration.set_args(product, year, tile, doy)
+            self.m_Configuration.set_args(product, year, tile, doy, user, passwd)
         except IOError as io_err:
             raise io_err
 
@@ -116,7 +118,6 @@ class LandCoverDataManager:
         # set up the correct web page dependent on mode
         if test_mode:
             parent_web_page = "http://ec-melodies.github.io/wp03-landcover-framework/"
-            #parent_web_page = "http://www.resc.rdg.ac.uk/training/course_instructions.php"
         else:
             parent_web_page = self.m_Configuration.create_URL()
 
@@ -137,5 +138,6 @@ class LandCoverDataManager:
 
             self.m_WebpageAccess.retrieve_data_files(parent_web_page, self.m_Configuration.get_tile(), local_filenames)
 
-        # increment to next DoY
-        self.m_Configuration.next_day()
+            # increment to next DoY
+            self.m_Configuration.next_day()
+        # end while

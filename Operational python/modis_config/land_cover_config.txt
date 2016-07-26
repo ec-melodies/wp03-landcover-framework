@@ -1,0 +1,1 @@
+{"product": "MOD09GA", "tile": "h18v04", "year": 2007, "DoY": [360], "dir":"","user": "Melodies_test", "passwd": "Testt35t"}

@@ -5,13 +5,18 @@ may be over-ridden but a basic set of product, tile, year and DoYis required
 whether by individual arguments or contained within a JSON configuration file.
 """
 __author__ = 'Jane'
+import os
+
+config_file_loc = str(os.getcwd()) + '/../../modis_config/land_cover_config.txt'
 
 defs = {'all': [],
         'product': "",
         'tile': "",
         'year': -1,
         'DoY': [],
-        'file': 'land_cover_config.txt',
+        'user': "",
+        'passwd': "",
+        'file': config_file_loc,
         'dir': ""}
 
 # This is the number of the above settings which are stored in the JSON configuration file:
