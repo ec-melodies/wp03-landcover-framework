@@ -17,10 +17,11 @@ CLASSES
     WebpageAccess
 """
 
-from GetData.src import LPDAAC_website as src
+from GetData.src import LPDAAC_website as website_const
 
 
 class WebpageAccess:
+    # TODO Allow product to be specified in different ways (Terra/Aqua/MOD/MYD/combined).
     """
     Class to retrieve data from archive.
 
@@ -40,6 +41,51 @@ class WebpageAccess:
         :return: no return
         """
         self.m_web_text_file_name = 'scrape.txt'
+        self.m_config = None
+
+    def set_config_object(self, config):
+        """
+        Set up access to a configration class instance which contains all the details needed.
+        Must be done prior to any web-page access.
+
+        :param config: a configuration:Configuration instance
+        :return:
+        """
+        self.m_config = config
+
+    def download_data_files(self, test_mode):
+        """
+        Retrieves all data files specified.
+
+        :param test_mode: controls webpage accessed for testing purposes.
+        :return: no return
+        """
+        # set up the correct web page dependent on mode
+        if test_mode:
+            parent_web_page = "http://ec-melodies.github.io/wp03-landcover-framework/"
+        else:
+            parent_web_page = self.m_config.create_URL()
+
+        # get the contents of the parent web page
+        if self.m_config.is_valid_day():
+            self.scrape_web_page(parent_web_page)
+
+        # while DoY not at the finish
+        while self.m_config.is_valid_day():
+            # convert the args to filename strings for data and xml - use config class
+            local_filenames = self.m_config.create_local_filenames()
+
+            # check whether the files have already been downloaded
+            for target in local_filenames:
+                if os.path.isfile('./' + target):
+                    print("File already exists {}".format(target))
+                    raise RuntimeError("File already exists {}".format(target))
+
+            self.retrieve_data_files(parent_web_page, self.m_config.get_tile(), local_filenames)
+
+            # increment to next DoY
+            self.m_config.next_day()
+        # end while
 
     def scrape_web_page(self, address):
         # Get the file list from the pre-defined web page and put into temporary file
@@ -96,6 +142,7 @@ class WebpageAccess:
         except urllib2.URLError as URL_err:
             print ("Problem getting web page data {}".format(URL_err.reason))
 
+
     def __find_file_links(self, tile, archive_address):
         """
         Sub-sample file list for those conforming to search criteria.
@@ -110,14 +157,14 @@ class WebpageAccess:
         """
 
         retval = []
-        search_terms = [src.data_file_ext, tile]
+        search_terms = [website_const.data_file_ext, tile]
         with open(self.m_web_text_file_name) as f:
             for line in f:
                 if all(x in line for x in search_terms):
-                    link = line.split()[src.line_split_1].split('\"')[src.line_split_2]
+                    link = line.split()[website_const.line_split_1].split('\"')[website_const.line_split_2]
                     # this gives us the relative path, need to prepend http:\\ parent part
                     retval.append(archive_address + '/' + link)
-                    if len(retval) == src.data_files_to_retrieve: # don't continue to search the text once the matches are found
+                    if len(retval) == website_const.data_files_to_retrieve: # don't continue to search the text once the matches are found
                         break
         f.close()
         return retval

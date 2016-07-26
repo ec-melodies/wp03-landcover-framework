@@ -26,7 +26,7 @@ CLASSES
 class Configuration:
     """
     Class to set up paths and URLs to find required data. Also dataset type and tile, plus
-    time period. Requires a configFileManager object in constructor.
+    time period. Also to get and set the configuration from a saved file in JSON format.
 
     Methods defined here:
         get_config(...)
@@ -50,21 +50,25 @@ class Configuration:
         create_URL(...)
             Concatenate parts to from URL.
 
+        load_config_file(...)
+            Read in saved configuration info.
+
+        dump_config_file(...)
+            Write configuration details to file.
+
     ----------------------------------------------------------------------
-    No data or other attributes defined here.
+    Attributes defined here:
+        All settings needed to retrieve specific data file.
 
     """
 
-
-
-    def __init__(self, mngr):
+    def __init__(self):
         """
         Initialise all attributes to empty values, keep pointer to the configFileManager.
         :param mngr: instantiated configFileManager object.
         :return: no return
         """
-        self.m_ConfigFileManager = mngr
-        self.m_config = const.defs['file']
+        self.m_config = const.defs['file']  # this default is a valid file
         self.m_product = const.defs['product']
         self.m_tile = const.defs['tile']
         self.m_year = const.defs['year']
@@ -75,25 +79,35 @@ class Configuration:
         self.m_end_day = 0
         self.m_day_counter = 0
 
-    def read_config(self, config_file):
+    def read_config(self, config_file=self.m_config):
         """
         Reads in saved configuration details.
 
-        File handling is delegated: settings are retrieved and stored as instance
-        attributes.
+        Settings are retrieved and stored as instance attributes.
 
         :return: no return
         :raise: IOError if the config. file is not found.
         """
         try:
-            self.m_config = config_file
-            self.m_ConfigFileManager.load_config_file(config_file)  # this will raise exception if no data is available
-            params = self.m_ConfigFileManager.get_config()
-            self.set_args(params[0], params[1], params[2], params[3])
-            self.set_directory(params[4])
-        except IOError:
+            if config_file != self.m_config:
+                self.m_config = config_file
+            with open(self.m_config, 'r') as infile:
+                config_dict = json.load(infile)
+            # if it opens, check whether it's complete
+            if len(config_dict) != const.json_args:
+                raise EOFError
+
+            self.m_product = config_dict['product']
+            self.m_tile = config_dict['tile']
+            self.m_year = config_dict['year']
+            self.m_DoY = config_dict['DoY']
+            self.m_user = config_dict['user']
+            self.m_passwd = config_dict['passwd']
+            self.set_directory(config_dict['dir'])
+
+        except IOError as io_err:
             # if there is no saved config, need to tell the caller
-            raise
+            raise io_err
 
     def write_config(self, config_file):
         """
@@ -108,7 +122,16 @@ class Configuration:
                        'user': self.m_user,
                        'passwd': self.m_passwd,
                        'dir': self.m_data_store}
-        self.m_ConfigFileManager.dump_config_file(config_file, config_dict)
+
+        with open(config_file, 'w') as outfile:
+            json.dump(config_dict, outfile)
+
+    def set_directory(self, dir):
+        # ensure path separators are standardised
+        self.m_data_store = str(dir).replace("\\", os.path.sep) + os.path.sep
+        # and that the directory is made
+        if not os.path.exists(self.m_data_store):
+            os.makedirs(self.m_data_store)
 
     def get_tile(self):
         """
@@ -122,6 +145,7 @@ class Configuration:
         """
         Set instance properties for retrieving required data file.
 
+        This may be called directly from the main program if command line arguments are provided.
         Data archive is at https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table.
         If an end day of year is not specified, 365 is used. If any of the arguments is set to its
         default invalid value, the configuration file will be used to provide settings; if none provided,
@@ -140,36 +164,29 @@ class Configuration:
         # The config file will either be the default or will have been set to a new one if the user
         # has chosen to over-ride one or two args only.
         # However, if it's been set, its contents have already been loaded so we don't need to do it again.
-        if ((product == const.defs['product']) or (year == const.defs['year']) or
-                (tile == const.defs['tile']) or not DoY
-                or (user == const.defs['user']) or (passwd == const.defs['passwd'])
+        if ((product == self.m_product) or (year == self.m_year) or
+                (tile == self.m_tile) or not DoY
+                or (user == self.m_user) or (passwd == self.m_passwd)
                 ) and self.m_config == const.defs['file']:
             try:
-                self.m_ConfigFileManager.load_config_file(self.m_config)
-                params = self.m_ConfigFileManager.get_config()
+                # read all values from the default file as a baseline
+                self.read_config()
             except IOError:
                 raise
 
-        # Then over-ride if non-default
+        # Then over-ride if they've been passed in the command line
         if product != const.defs['product']:
             self.m_product = product
-        else:
-            self.m_product = params[0]
 
         if year != const.defs['year']:
             self.m_year = int(year)
-        else:
-            self.m_year = int(params[1])
 
         if tile != const.defs['tile']:
             self.m_tile = tile
-        else:
-            self.m_tile = params[2]
 
         if DoY != const.defs['DoY']:
             self.m_DoY = DoY
-        else:
-            self.m_DoY = params[3]
+
         # DoY may be a single value (as str) or a 2 element list of values (as str)
         if type(self.m_DoY) is str:
             self.m_day_counter = int(self.m_DoY)
@@ -184,12 +201,9 @@ class Configuration:
 
         if user == const.defs['user']:
             self.m_user = user
-        else:
-            self.m_user = params[4]
+
         if passwd == const.defs['passwd']:
             self.m_passwd = passwd
-        else:
-            self.m_passwd = params[5]
 
         self.__set_constants()
 
@@ -209,13 +223,6 @@ class Configuration:
         else:
             self.m_data_dir = "MOTA"
             self.m_time_step = 8
-
-    def set_directory(self, dir):
-        # ensure path separators are standardised
-        self.m_data_store = str(dir).replace("\\", os.path.sep) + os.path.sep
-        # and that the directory is made
-        if not os.path.exists(self.m_data_store):
-            os.makedirs(self.m_data_store)
 
     def create_local_filenames(self):
         """
@@ -274,6 +281,8 @@ class Configuration:
         web_string = (src.data_addr_root + self.m_data_dir + '/' + self.m_product +
                       '.' + self.m_version + '/' + date.strftime('%Y.%m.%d'))
         return web_string
+
+
 
 
 
