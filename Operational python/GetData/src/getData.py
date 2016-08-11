@@ -1,6 +1,6 @@
 """
 getData.py
-Main script for downloading land cover data files.
+Main program for downloading land cover data files.
 
 Note on testing: test framework uses optional arg to main() to mimic full behaviour but stop short of
 download from the data archive. In addition, command line arg '-test' is used to do a download from
@@ -50,15 +50,18 @@ def create_parser(args=None):
     :return: Invocation arguments
     """
     # http://www.alanbriolat.co.uk/optional-positional-arguments-with-argparse.html
-    parser = argparse.ArgumentParser(description='Use 4 arguments with either -a switch or all switches to specify all '
+    parser = argparse.ArgumentParser(description='Use 6 arguments with either -a switch or all switches to specify all '
                                                  'parameters, or select switch to override any parameter set in the '
                                                  'configuration file which may also be given. '
-                                                 'Default file is ./land_cover_config.txt')
+                                                 'Default configuration file is ./land_cover_config.txt')
     parser.add_argument('-all', '-a', default=cfg_const.defs['all'], nargs=6,
                         help="All six of product/year/tile/start_DoY/username/password in that order")
-    parser.add_argument('-product', '-p', default=cfg_const.defs['product'], nargs='?', help="Product name e.g. MOD09GA")
-    parser.add_argument('-year', '-y', default=cfg_const.defs['year'], nargs='?', help="Year data required", type=int)
-    parser.add_argument('-tile', '-t', default=cfg_const.defs['tile'], nargs='?', help="Tile required")
+    parser.add_argument('-product', '-p', default=cfg_const.defs['product'], nargs='?',
+                        help="Product name e.g. MOD09GA")
+    parser.add_argument('-year', '-y', default=cfg_const.defs['year'], nargs='?',
+                        help="Year data required", type=int)
+    parser.add_argument('-tile', '-t', default=cfg_const.defs['tile'], nargs='?',
+                        help="Tile required")
     parser.add_argument('-DoY', '-D', default=cfg_const.defs['DoY'], nargs='*',
                         help="Start Day of Year and optionally also end DoY", type=int)
     parser.add_argument('-user', '-u', default=cfg_const.defs['user'], nargs='?',
@@ -67,9 +70,12 @@ def create_parser(args=None):
                         help="Password to log into FTP site")
     parser.add_argument('-dir', '-d', default=cfg_const.defs['dir'], nargs='?',
                         help="Location for downloaded files, default is current directory")
-    parser.add_argument('-file', '-f', default=cfg_const.defs['file'], nargs='?', help="Name of configuration file to load")
-    parser.add_argument('-save', '-s', nargs='?', help="Name of file to save configuration settings")
-    parser.add_argument('-test', default='No', nargs='?', help="Run program in test mode, development only")
+    parser.add_argument('-file', '-f', default=cfg_const.defs['file'], nargs='?',
+                        help="Name of configuration file to load")
+    parser.add_argument('-save', '-s', nargs='?',
+                        help="Name of file to save configuration settings")
+    parser.add_argument('-test', default='No', nargs='?',
+                        help="Run program in test mode, development only")
     return parser.parse_args(args=args)
 
 def main(args, testing_args=False):
@@ -79,8 +85,7 @@ def main(args, testing_args=False):
     :param testing_args: Optional parameter which, if true, will prevent data download. Used by automated testing only.
     :return: value of test_cmds
     """
-    # Create class which will handle all the details
-######data_manager = landCoverDataManager.LandCoverDataManager()
+    # Create classes which will handle all the details
     config = cfg.Configuration()
     web = webpageAccess.WebpageAccess()
 
@@ -89,7 +94,7 @@ def main(args, testing_args=False):
     # plus the new login details needed...
     if args.all:
         if len(args.all) != 6:
-            print("Insufficient parameters provided. Exiting.")
+            print("Insufficient parameters provided with -a switch. Exiting.")
             sys.exit(1)
         else:
             # could trap exception of insufficient args and no config file but no need as already checked args
@@ -104,7 +109,7 @@ def main(args, testing_args=False):
                 print("Missing or incorrect config file. Exiting.")
                 sys.exit(1)
         # also we need to pick up any of the four basic settings (which will over-ride the file ones)
-        # so get the config to load default file then override...
+        # if the file has not been set (above), the config will load default file then override...
         if (args.product != cfg_const.defs['product']) or (args.year != cfg_const.defs['year']) or \
                 (args.tile != cfg_const.defs['tile']) or (args.user != cfg_const.defs['user']) or \
                 (args.passwd != cfg_const.defs['passwd']) or args.DoY:
