@@ -11,9 +11,10 @@
 import datetime
 import os
 import json
+import configparser
 
 import constants as const
-import LPDAAC_website as src
+import GetData.src.LPDAAC_website as webSrc
 
 """
 NAME
@@ -27,19 +28,25 @@ CLASSES
 class Configuration:
     """
     Class to set up paths and URLs to find required data. Also dataset type and tile, plus
-    time period. Also to get and set the configuration from a saved file in JSON format.
+    time period. Also to get the configuration from a saved file in INI format.
 
     Methods defined here:
-        get_config(...)
+        read_config(...)
             Loads config from file.
 
-        set_args(...)
-            Initialise config explicitly.
+        set_directory(...)
+            Creates specified folder if necessary.
 
         get_tile(...)
             Retrieve tile name.
 
-        create_filename(...)
+        get_user(...)
+            Retrieve user name.
+
+        get_passwd(...)
+            Retrieve user's password.
+
+        create_local_filenames(...)
             Concatenate parts to form file name.
 
         next_day(...)
@@ -49,13 +56,8 @@ class Configuration:
             Check day in range of start-end.
 
         create_URL(...)
-            Concatenate parts to from URL.
+            Concatenate parts to form web page address.
 
-        load_config_file(...)
-            Read in saved configuration info.
-
-        dump_config_file(...)
-            Write configuration details to file.
 
     ----------------------------------------------------------------------
     Attributes defined here:
@@ -65,78 +67,94 @@ class Configuration:
 
     def __init__(self):
         """
-        Initialise all attributes to empty values, keep pointer to the configFileManager.
-        :param mngr: instantiated configFileManager object.
+        Initialise all attributes to empty values.
+
         :return: no return
         """
-        self.m_config = const.defs['file']  # this default is a valid file
-        self.m_product = const.defs['product']
-        self.m_tile = const.defs['tile']
-        self.m_year = const.defs['year']
-        self.m_DoY = const.defs['DoY']
-        self.m_user = const.defs['user']
-        self.m_passwd = const.defs['passwd']
-        self.m_data_store = const.defs['dir']
-        self.m_end_day = 0
-        self.m_day_counter = 0
-        self.m_data_dir = ""
-        self.m_version = ""
-        self.m_time_step = 0
+        self.cfg = configparser.ConfigParser()  # parser object to read INI file
+        self.m_product = ""                     # product required - either 'MOD' or 'MYD'
+        self.m_tile = ""                        # specific tile required
+        self.m_year = -1                        # year data is required for
+        self.m_DoY = -1                         # start day to get data files for
+        self.m_user = ""                        # login details for LPDACC site
+        self.m_passwd = ""                      # login details for LPDACC site
+        self.m_config = const.defs['file']      # this default is a valid file
+        self.m_data_store = ""                  # optional location for user to place downloaded files
+        self.m_processed_data = ""              # optional location for user to place processed data files
+        self.m_end_day = 0                      # end day for data retrieval (default 365)
+        self.m_day_counter = 0                  # incremental day counter for iterating data archive
+        self.m_data_dir = ""                    # used in creating URL for data location
+        self.m_version = ""                     # used in creating URL for data location
+        self.m_time_step = 0                    # time step for incrementing the day counter according to product
+        self.m_nproc = 0                        # number of processes to spawn for gdal manipulation
 
-    def read_config(self, config_file = const.defs['file']):
+    def read_config(self, mode, config_file):
         """
         Reads in saved configuration details.
 
         Settings are retrieved and stored as instance attributes.
 
+        :param mode: indicates which part of the config should be used: download (0)
+         or MODISprocess (1)
         :return: no return
         :raise: IOError if the config. file is not found.
         """
+        # TODO check values for None which indicates a missing setting. raise exception.
         try:
             if config_file != self.m_config:
                 self.m_config = config_file
-            with open(self.m_config, 'r') as infile:
-                config_dict = json.load(infile)
-            # if it opens, check whether it's complete
-            if len(config_dict) != const.json_args:
-                raise EOFError
+            f = open(self.m_config)
+            self.cfg.read_file(f)
 
-            self.m_product = config_dict['product']
-            self.m_tile = config_dict['tile']
-            self.m_year = config_dict['year']
-            self.m_DoY = config_dict['DoY']
-            self.m_user = config_dict['user']
-            self.m_passwd = config_dict['passwd']
-            self.set_directory(config_dict['dir'])
+            if mode == 0:
+                section = self.cfg['download']
+                self.m_product = section.get('product')
+                self.m_user = section.get('user')
+                self.m_passwd = section.get('password')
+                if self.m_product is None or self.m_user is None or self.m_passwd is None:
+                    raise RuntimeError
+            elif mode == 1:
+                section = self.cfg['MODISprocess']
+                self.m_processed_data = section.get('processed')
+                self.m_nproc = section.getint('nproc', 1)
+
+            self.m_tile = section.get('tile')
+            self.m_year = section.getint('year')
+            if self.m_tile is None or self.m_year is None:
+                raise RuntimeError
+
+            self.m_DoY = section.getint('DoYstart', 1)
+            self.m_end_day = section.getint('DoYend', 365)
+
+            self.m_day_counter = self.m_DoY
+
+            self.set_directory(section.get('datastore'))
+
+            self.__set_constants()
+
+            f.close()
 
         except IOError as io_err:
             # if there is no saved config, need to tell the caller
             raise io_err
 
-    def write_config(self, config_file):
-        """
-
-        :param config_file:
-        :return:
-        """
-        config_dict = {'product': self.m_product,
-                       'tile': self.m_tile,
-                       'year': self.m_year,
-                       'DoY': self.m_DoY,
-                       'user': self.m_user,
-                       'passwd': self.m_passwd,
-                       'dir': self.m_data_store}
-
-        with open(config_file, 'w') as outfile:
-            json.dump(config_dict, outfile)
-
     def set_directory(self, dir):
-        if str(dir) != '':
-            # ensure path separators are standardised
+        """
+        Creates folder specified.
+        :param dir: Valid name for a directory.
+        :return: no return
+        """
+        if str(dir) != '' and dir is not None:
+            # ensure path separators are standardised, and append separator
             self.m_data_store = str(dir).replace("\\", os.path.sep) + os.path.sep
-            # and that the directory is made
-            if not os.path.exists(self.m_data_store):
-                os.makedirs(self.m_data_store)
+        else:
+            self.m_data_store = os.path.expanduser('~') + os.path.sep + 'data' + os.path.sep
+
+        self.m_data_store += self.m_tile + os.path.sep + self.m_product + os.path.sep
+
+        # and that the directories are made
+        if not os.path.exists(self.m_data_store):
+            os.makedirs(self.m_data_store)
 
     def get_tile(self):
         """
@@ -147,97 +165,40 @@ class Configuration:
         return self.m_tile
 
     def get_user(self):
+        """
+        Get instance property: user name
+
+        :return: user name
+        """
         return self.m_user
 
     def get_passwd(self):
+        """
+        Get instance property: user's password
+
+        :return: password
+        """
         return self.m_passwd
-
-    def set_args(self, product, year, tile, DoY, user, passwd):
-        """
-        Set instance properties for retrieving required data file.
-
-        This may be called directly from the main program if command line arguments are provided.
-        Data archive is at https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table.
-        If an end day of year is not specified, 365 is used. If any of the arguments is set to its
-        default invalid value, the configuration file will be used to provide settings; if none provided,
-        the default file will be loaded.
-
-        :param product: MOD* and MYD* supported (str)
-        :param year: valid year in data archive (str)
-        :param tile: valid tile in data archive (str)
-        :param DoY: starting day of year (str), and optionally also end (str list)
-        :param user: FTP site user login
-        :param passwd: FTP site user password
-        :raise IOError: if insufficient args and no config file to provide remainder
-        :return: no return
-        """
-        # Read in the config file if any of these args is still a default (i.e. not set).
-        # The config file will either be the default or will have been set to a new one if the user
-        # has chosen to over-ride one or two args only.
-        # However, if it's been set, its contents have already been loaded so we don't need to do it again.
-        if ((product == self.m_product) or (year == self.m_year) or
-                (tile == self.m_tile) or not DoY
-                or (user == self.m_user) or (passwd == self.m_passwd)
-                ) and self.m_config == const.defs['file']:
-            try:
-                # read all values from the default file as a baseline
-                self.read_config()
-            except IOError:
-                raise
-
-        # Then over-ride if they've been passed in the command line
-        if product != const.defs['product']:
-            self.m_product = product
-
-        if year != const.defs['year']:
-            self.m_year = int(year)
-
-        if tile != const.defs['tile']:
-            self.m_tile = tile
-
-        if DoY != const.defs['DoY']:
-            self.m_DoY = DoY
-
-        # DoY may be a single value (as str) or a 2 element list of values (as str)
-        if type(self.m_DoY) is str:
-            self.m_day_counter = int(self.m_DoY)
-            self.m_end_day = 365
-        elif type(DoY) is list:
-            if len(DoY)==2:
-                self.m_day_counter = int(self.m_DoY[0])
-                self.m_end_day = int(self.m_DoY[1])
-            else:
-                self.m_day_counter = int(self.m_DoY[0])
-                self.m_end_day = 365
-
-        if user != const.defs['user']:
-            self.m_user = user
-
-        if passwd != const.defs['passwd']:
-            self.m_passwd = passwd
-
-        self.__set_constants()
 
     def __set_constants(self):
         """
         Set instance properties for constants.
         :return: no return
         """
-        # TODO remove these horrible hard-coded values
-        self.m_version = "005"
-        if str(self.m_product).startswith('MOD'):
-            self.m_data_dir = "MOLT"
-            self.m_time_step = 1
-        elif str(self.m_product).startswith('MYD'):
-            self.m_data_dir = "MOLA"
-            self.m_time_step = 1
+        self.m_version = const.data_version                     # "005"
+        if str(self.m_product).startswith(const.product_MOD):   # 'MOD'):
+            self.m_data_dir = const.data_dir_MOD                # "MOLT"
+            self.m_time_step = const.timestep_MOD               # 1
+        elif str(self.m_product).startswith(const.product_MYD): # 'MYD'):
+            self.m_data_dir = const.data_dir_MYD                # "MOLA"
+            self.m_time_step = const.timestep_MYD               # 1
         else:
-            self.m_data_dir = "MOTA"
-            self.m_time_step = 8
+            self.m_data_dir = const.data_dir_other              # "MOTA"
+            self.m_time_step = const.timestep_other             # 8
 
     def create_local_filenames(self):
         """
-        Construct name for retrieved files.
+        Construct name for retrieved files, and make subdirectories as needed.
 
         Uses settings/parameters which define the file to be downloaded. Creates names for data and xml files.
 
@@ -248,9 +209,9 @@ class Configuration:
         if str(self.m_data_store) != "":
             # prepend path to filename
             local_filename = self.m_data_store
-        # TODO remove these horrible hard-coded values too
+        # TODO remove these horrible hard-coded values
         local_filename += (self.m_product + '.A' + str(self.m_year) + '{0:03d}'.format(self.m_day_counter) +
-                          '.' + self.m_tile + '.' + self.m_version + '.hdf')
+                           '.' + self.m_tile + '.' + self.m_version + '.hdf')
 
         local_filenames.append(local_filename)
         local_filename += str('.xml')
@@ -264,7 +225,7 @@ class Configuration:
 
         :return: True if day is within range, False otherwise
         """
-        print ("Day counter {}".format(self.m_day_counter))
+        #print ("Day counter {}".format(self.m_day_counter))
         if self.m_day_counter <= self.m_end_day:
             return True
         else:
@@ -289,6 +250,6 @@ class Configuration:
         # convert current DoY into a date
         date = datetime.datetime(self.m_year, 1, 1) + datetime.timedelta(self.m_day_counter - 1)
         # create string
-        web_string = (src.data_addr_root + self.m_data_dir + '/' + self.m_product +
+        web_string = (webSrc.data_addr_root + self.m_data_dir + '/' + self.m_product +
                       '.' + self.m_version + '/' + date.strftime('%Y.%m.%d'))
         return web_string

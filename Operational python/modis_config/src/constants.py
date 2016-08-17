@@ -1,26 +1,25 @@
 """
-constants.py contains constants which can be used by all modules
-These are the defaults for all the settings used by the program, any of which
-may be over-ridden but a basic set of product, tile, year and DoYis required
-whether by individual arguments or contained within a JSON configuration file.
+constants.py contains information which can be used by all modules.
 """
 __author__ = 'Jane'
 import os
 
-config_file_loc = str(os.getcwd()) + '/../../modis_config/land_cover_config.txt'
+# Constants for data retrieval
+config_file = str(os.getcwd()) + '/../../modis_config/land_cover_config.ini'
 
-defs = {'all': [],
-        'product': "",
-        'tile': "",
-        'year': -1,
-        'DoY': [],
-        'user': "",
-        'passwd': "",
-        'file': config_file_loc,
-        'dir': ""}
-
-# This is the number of the above settings which are stored in the JSON configuration file:
-# current;y product, tile, year, DoY, dir, username and password
-json_args = 7
+defs = {'file': config_file,
+        'dest': "VRTs"
+        }
 
 local_time_zone = 'Europe/London'
+
+data_version = "005"
+
+product_MOD = 'MOD'
+product_MYD = 'MYD'
+data_dir_MOD = "MOLT"
+data_dir_MYD = "MOLA"
+data_dir_other = "MOTA"
+timestep_MOD = 1
+timestep_MYD = 1
+timestep_other = 8
