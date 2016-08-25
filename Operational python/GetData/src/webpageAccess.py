@@ -48,7 +48,7 @@ class WebpageAccess:
 
     def set_config_object(self, config):
         """
-        Set up access to a configration class instance which contains all the details needed.
+        Set up access to a configuration class instance which contains all the details needed.
         Must be done prior to any web-page access.
 
         :param config: a configuration:Configuration instance
