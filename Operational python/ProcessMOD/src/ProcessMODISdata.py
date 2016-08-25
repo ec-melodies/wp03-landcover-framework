@@ -1,4 +1,10 @@
 """
+ProcessMODISdata.py
+
+Main program for processing MODIS raw data. This program is responsible for
+* checking that processed files are not already present
+* distributing files to process over user specified number of cores
+* delegating actual processing to helper class
 
 """
 __author__ = 'Jane'
@@ -9,7 +15,9 @@ import datetime as dt
 #import LPDAAC_website as src
 #import
 
-
+import modis_config.src.configuration as cfg
+import modis_config.src.constants as cfg_const
+import gdal_processing as proc
 
 def create_parser(args=None):
     """
@@ -17,29 +25,43 @@ def create_parser(args=None):
     :param args: optional argument which defaults to nothing, only used in testing.
     :return: Invocation arguments
     """
-    parser = argparse.ArgumentParser(description='Use 4 arguments with either -a switch or all switches to specify all '
-                                                 'parameters, or select switch to override any parameter set in the '
-                                                 'configuration file which may also be given. '
-                                                 'Default file is ./land_cover_config.txt')
-    parser.add_argument('-all', '-a', default=const.defs['all'], nargs=3, help="All three of year/tile/start_DoY "
-                                                                               "in that order")
-    parser.add_argument('-year', '-y', default=const.defs['year'], nargs='?', help="Year data required", type=int)
-    parser.add_argument('-tile', '-t', default=const.defs['tile'], nargs='?', help="Tile required")
-    parser.add_argument('-DoY', '-D', default=const.defs['DoY'], nargs='*',
-                        help="Start Day of Year and optionally also end DoY", type=int)
-    parser.add_argument('-src', '-s', default=const.defs['dir'], nargs='?',
-                        help="Location for downloaded files, default is current directory")
-    parser.add_argument('-dest', '-d', default=const.defs['dir'], nargs='?',
-                        help="Location for output files, default is current directory")
-    parser.add_argument('-proc', '-p', default=1, nargs='?', help="Number of processes to spawn", type=int)
-
+    parser = argparse.ArgumentParser(description='All configuration parameters are contained in ./land_cover_config.ini'
+                                                 'Use -f switch to override with an alternative file.')
+    parser.add_argument('-file', '-f', default=cfg_const.defs['file_proc'], nargs='?',
+                        help="Name of configuration file to load")
     return parser.parse_args(args=args)
 
 
 def main(args):
-    pass
+    """
 
+    :param args: Namespace object containing given command line options
 
+    :return:
+    """
+    config = cfg.Configuration()
+    processing = proc.GdalProcessing()
+
+    # Let's check the command line switches
+    # if we're given a file, load the info.
+    try:
+        if args.file != cfg_const.defs['file']:
+            config.read_config(1, args.file)
+        else:
+            config.read_config(1, cfg_const.defs['file'])
+    except IOError:
+        print("Missing configuration file. Exiting.")
+        sys.exit(1)
+    except RuntimeError:
+        print("Configuration file has values missing. Exiting.")
+        sys.exit(1)
+
+    # pass config instance to gdal_processing
+    processing.set_config_object(config)
+    try:
+        processing.do_gdal_processing()
+    except IOError:
+        sys.exit(1)
 
 if __name__ == '__main__':
     parse_args = create_parser()
