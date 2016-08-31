@@ -11,10 +11,6 @@ __author__ = 'Jane'
 
 import sys
 import argparse
-import datetime as dt
-#import LPDAAC_website as src
-#import
-
 import modis_config.src.configuration as cfg
 import modis_config.src.constants as cfg_const
 import gdal_processing as proc
@@ -37,7 +33,9 @@ def main(args):
 
     :param args: Namespace object containing given command line options
 
-    :return:
+    :return: none
+    :except: IOError if there is no configuration file
+    :except: RuntimeError if configuration file is incomplete
     """
     config = cfg.Configuration()
     processing = proc.GdalProcessing()

@@ -1,16 +1,13 @@
 __author__ = 'Jane'
 
 
-# import modis_config.src.configuration as cfg
-from multiprocessing import Process, Queue
 import os
 import shutil
-from sci_data_records import SciDataRecords as SDR
-# from osgeo import gdal
 import sys
-# if sys.platform == 'win32':
-#     sys.path.append('C:\\Python27\\Scripts')
-
+from multiprocessing import Process, Queue
+from sci_data_records import SciDataRecords as SDR
+from sci_data_records import File_index
+import dataset_info as di
 
 # gdal_vrtmerge.py has to be copied into a suitable place...
 # e.g. C:\Python27\Lib\site-packages
@@ -20,6 +17,19 @@ import sys
 import gdal_vrtmerge as gmerge
 
 class GdalProcessing:
+    """
+    Class to oversee image processing.
+
+    Methods defined here:
+        set_config_object(...)
+            Set up access to a configuration class instance which contains all the details needed.
+
+        do_gdal_processing(...)
+            Main work of class: ensure files are available and instigate processing.
+
+    ----------------------------------------------------------------------
+    No data or other attributes defined here.
+    """
     def __init__(self):
         self.m_config = None
 
@@ -29,12 +39,16 @@ class GdalProcessing:
         Must be done prior to any processing.
 
         :param config: a configuration:Configuration instance
-        :return:
+        :return: no return
         """
         self.m_config = config
         self.m_sdr = SDR()
 
     def do_gdal_processing(self):
+        """
+        Main work of class: ensure files are available and instigate processing.
+        :return: no return
+        """
         # Check that data exists for required product/tile
         # Use the datastore directory from configuration
         source_dir = self.m_config.get_rawdata_dir()
@@ -56,9 +70,17 @@ class GdalProcessing:
                         print("No files available for the required days. Exiting.")
                         raise IOError
             # we're through without an exception, therefore files of correct year/DoY are available to process
-            self.distribute_gdal_work()
+            self._distribute_gdal_work()
 
-    def distribute_gdal_work(self):
+    def _distribute_gdal_work(self):
+        """
+        Put files matching required days onto a queue and spawn processes.
+
+        Each queue item contains both the file and its DoY. Only the hdf files are added.
+        The number of processes spawned is controlled by 'nproc' in the configuration file,
+        and this method will wait until all have finished.
+        :return: no return
+        """
         file_q = Queue()
         file_list = os.listdir(self.m_config.get_rawdata_dir())  # rawdata_dir includes /tile/product/
         # http://stackoverflow.com/questions/4843158/check-if-a-python-list-item-contains-a-string-inside-another-string
@@ -73,11 +95,21 @@ class GdalProcessing:
                 queue_item = (self.m_config.get_rawdata_dir() + the_file, doy)
                 file_q.put(queue_item)
         for i in range(self.m_config.get_num_proc):
-            p = Process(target=self.do_work, args=(file_q,))
+            p = Process(target=self._do_work, args=(file_q,))
             p.start()
         p.join()
 
-    def do_work(self, q):
+    def _do_work(self, q):
+        """
+        File processing: do GDAL translate then call layerstack & QA methods
+
+        Work in a unique folder to retrieve image file and call GDAL translation for each of
+        the pre-defined scientific data records in class SciDataRecords.
+        Continue with further processing on the GDAL datasets.
+
+        :param q: the queue of items to process (filename and its DoY)
+        :return: no return
+        """
         while True:
             # create sub-dir based on pid, change to it
             temp_dir = self.m_config.get_rawdata_dir() + os.path.sep + os.getpid() + os.path.sep
@@ -85,7 +117,7 @@ class GdalProcessing:
                 os.makedirs(temp_dir)
             os.chdir(temp_dir)
 
-            # call gdal stuff
+            # retrieve queue item: file and its DoY
             queue_item = q.get()
             input_file = queue_item[0]   # returns string for file path-name
             doy = queue_item[1]
@@ -107,31 +139,79 @@ class GdalProcessing:
                               + ':' + input_file + ':' + self.m_sdr.get_sdr(i_sdr)
                               + ' ' + out_file_name)
 
-            # Create reflectance layerstack - input file names taken from last SDR
-            refl_string = '*' + self.m_sdr.get_gdalmerge_filenames()[0] + '*.vrt'
-            sys.argv = ['-o', 'sur_refl.vrt', '-separate', refl_string]
-            gmerge.main()
-            # Create angular data layerstack
-            zen_string = '*' + self.m_sdr.get_gdalmerge_filenames()[1] + '*vrt'
-            az_string = '*' + self.m_sdr.get_gdalmerge_filenames()[2] + '*vrt'
-            sys.argv = ['-o', 'angles.vrt', '-separate', zen_string, az_string]
-            gmerge.main()
+            # Continue processing file set...
+            self._create_layerstacks(temp_dir)
 
-            # TODO now call another python script full of hardcoded values, eugh :(
-            # python $HOME/MELODIES/src/MODIS/MOD09/MOD09GA.py
+            # Create object to handle details
+            dataset_info = di.DatasetInfo(temp_dir)
 
-            # move results into central VRTs folder
-            # mv $TMPDIR/SDS_layerstack_masked.tif $OUTDIR/$product.$year$strDoY.$tile.tif
-            # mv $TMPDIR/SDS_layerstack_kernels_masked.tif $OUTDIR/$product.$year$strDoY.$tile.kernels.tif
-            os.rename('SDS_layerstack_masked.tif',
-                      self.m_config.get_gdal_dir() + self.m_config.get_product + '.'
-                      + str(self.m_config.get_year) + str(doy) + '.'
-                      + self.m_config.get_tile() + '.tif')
-            os.rename('SDS_layerstack_kernels_masked.tif',
-                      self.m_config.get_gdal_dir() + self.m_config.get_product + '.'
-                      + str(self.m_config.get_year) + str(doy) + '.'
-                      + self.m_config.get_tile() + '.kernels.tif')
+            self._process_layerstacks(dataset_info)
 
-            # remove the temporary files and process directory
-            os.chdir('..')
-            shutil.rmtree(temp_dir)
+            self._calculate_kernels(dataset_info)
+
+            self._move_results(temp_dir, doy)
+
+
+
+    def _create_layerstacks(self, temp_dir):
+        """
+        Create layerstacks from translated image files.
+
+        Process reflectance and angles files separately.
+
+        :param temp_dir: working directory
+        :return: no return
+        """
+        os.chdir(temp_dir)
+        # Create reflectance layerstack
+        refl_filename_string = '*' + self.m_sdr.get_gdalmerge_filenames()[File_index.sur_refl] + '*.vrt'  # match all sur_refl files
+        sys.argv = ['-o', self.m_sdr.get_refl_filename, '-separate', refl_filename_string]
+        gmerge.main()
+        # Create angular data layerstack
+        zen_filename_string = '*' + self.m_sdr.get_gdalmerge_filenames()[File_index.Zenith] + '*vrt'  # match all Zen files
+        az_filename_string = '*' + self.m_sdr.get_gdalmerge_filenames()[File_index.Azimuth] + '*vrt'  # match all Az files
+        sys.argv = ['-o', self.m_sdr.get_agl_filename(), '-separate', zen_filename_string, az_filename_string]
+        gmerge.main()
+
+    def _process_layerstacks(self, dataset_info):
+        """
+        Delegate complex QA processing to DatasetInfo object while providing it with filenames for various stages.
+        :param dataset_info: Initialised class for data manipulation
+        :return: no return
+        """
+        dataset_info.initialise_refl(self.m_sdr.get_refl_filename)
+        dataset_info.read_QA(self.m_sdr.get_QA_filename)
+        dataset_info.screen_using_QA(self.m_sdr.get_layer_filename())
+
+    def _calculate_kernels(self, dataset_info):
+        """
+        Delegate complex kernel processing to DatasetInfo object while providing it with filenames for various stages.
+        :param dataset_info: Initialised class for data manipulation
+        :return: no return
+        """
+        dataset_info.initialise_kernels(self.m_sdr.get_agl_filename())
+        dataset_info.calculate_kernels(self.m_sdr.get_layer_kernels_filename())
+
+    def _move_results(self, temp_dir, doy):
+        """
+        Rename temporary processing files and store in user configured location
+        :param temp_dir: working directory
+        :param doy: DoY which has been processed
+        :return: no return
+        """
+        os.chdir(temp_dir)
+        # move results into central VRTs folder
+        # mv $TMPDIR/SDS_layerstack_masked.tif $OUTDIR/$product.$year$strDoY.$tile.tif
+        # mv $TMPDIR/SDS_layerstack_kernels_masked.tif $OUTDIR/$product.$year$strDoY.$tile.kernels.tif
+        os.rename(self.m_sdr.get_layer_filename(),
+                  self.m_config.get_gdal_dir() + self.m_config.get_product + '.'
+                  + str(self.m_config.get_year) + str(doy) + '.'
+                  + self.m_config.get_tile() + '.tif')
+        os.rename(self.m_sdr.get_layer_kernels_filename(),
+                  self.m_config.get_gdal_dir() + self.m_config.get_product + '.'
+                  + str(self.m_config.get_year) + str(doy) + '.'
+                  + self.m_config.get_tile() + '.kernels.tif')
+
+        # remove the temporary files and process' directory
+        os.chdir('..')
+        shutil.rmtree(temp_dir)
