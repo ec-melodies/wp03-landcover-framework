@@ -28,12 +28,20 @@ class WebpageAccess:
     Class to retrieve data from archive.
 
     Methods defined here:
+        set_config_object(...)
+            Set up access to a configuration class instance which contains all the details needed.
+
+        download_data_files(...)
+            Retrieves all data files specified.
+
+        scrape_web_page(...)
+            Copy contents of page at given address and save to text file.
+
         retrieve_data_files(...)
-            Loads config from file.
+            Download required data from archive website.
 
     ----------------------------------------------------------------------
     No data or other attributes defined here.
-
 
     """
 
@@ -92,6 +100,12 @@ class WebpageAccess:
         # end while
 
     def scrape_web_page(self, address):
+        """
+        Copy contents of page at given address and save to text file.
+
+        :param address: web page to scrape
+        :return:
+        """
         # Get the file list from the pre-defined web page and put into temporary file
         self.__download_page(address, self.m_web_text_file_name)
 
