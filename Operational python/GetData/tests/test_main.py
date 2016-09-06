@@ -25,15 +25,15 @@ from modis_config.src.constants import defs as constants
 def test_clean_up():
     try:
         for dr in glob.glob('.\data*'):
-            shutil.rmtree(dr)
-        for fl in glob.glob('.\*.hdf*'):
+            shutil.rmtree(dr, ignore_errors=True)
+        # for fl in glob.glob('.\*.hdf*'):
+            # os.remove(fl)
+        for dr in glob.glob(os.path.expanduser('~') + '\data'):
+            shutil.rmtree(dr, ignore_errors=True)
+        for fl in glob.glob('.\scrape.txt'):
             os.remove(fl)
-        for fl in glob.glob('.\save*'):
-            os.remove(fl)
-        # TODO also need to remove files in user home directory
-        os.remove('.\scrape.txt')
-    except:
-        pass
+    except Exception as ex:
+        raise ex
 
 # Unit test some of the more complex methods
 def set_up_config(mode, the_file):
@@ -94,7 +94,7 @@ def test_file_arg_file_missing():
 
 # Test a download, use the default config mostly as this is what's been set up in the page.
 # setting test==Git uses the dummy website to scrape and dummy files to download.
-# setting test==Real uses real website to scrape and real files but only the first 1000 bytes.
+# setting test==Real uses real website to scrape and real files to download but only the first 1000 bytes.
 # TODO more detailed tests
 def test_file_download():
     args = create_parser(['-file', 'land_cover_config_test_download.ini', '-test', 'Git'])
