@@ -23,8 +23,10 @@ def create_parser(args=None):
     """
     parser = argparse.ArgumentParser(description='All configuration parameters are contained in ./land_cover_config.ini'
                                                  'Use -f switch to override with an alternative file.')
-    parser.add_argument('-file', '-f', default=cfg_const.defs['file_proc'], nargs='?',
+    parser.add_argument('-file', '-f', default=cfg_const.defs['file'], nargs='?',
                         help="Name of configuration file to load")
+    parser.add_argument('-test', '-t', action="store_true",
+                        help="Run program in test mode, development only")
     return parser.parse_args(args=args)
 
 
@@ -57,7 +59,7 @@ def main(args):
     # pass config instance to gdal_processing
     processing.set_config_object(config)
     try:
-        processing.do_gdal_processing()
+        processing.do_gdal_processing(args.test)
     except IOError:
         sys.exit(1)
 

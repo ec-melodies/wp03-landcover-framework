@@ -1,0 +1,12 @@
+gdal_translate -of VRT -outsize 200% 200% HDF4_EOS:EOS_GRID:C:\Users\Jane\data\h18v04\MOD09GA\MOD09GA.A2007362.h18v04.005.hdf:MODIS_Grid_1km_2D:state_1km_1 state_1km_1.vrt
+gdal_translate -of VRT -outsize 200% 200% HDF4_EOS:EOS_GRID:C:\Users\Jane\data\h18v04\MOD09GA\MOD09GA.A2007362.h18v04.005.hdf:MODIS_Grid_1km_2D:SensorZenith_1 SensorZenith_1.vrt
+gdal_translate -of VRT -outsize 200% 200% HDF4_EOS:EOS_GRID:C:\Users\Jane\data\h18v04\MOD09GA\MOD09GA.A2007362.h18v04.005.hdf:MODIS_Grid_1km_2D:SensorAzimuth_1 SensorAzimuth_1.vrt
+gdal_translate -of VRT -outsize 200% 200% HDF4_EOS:EOS_GRID:C:\Users\Jane\data\h18v04\MOD09GA\MOD09GA.A2007362.h18v04.005.hdf:MODIS_Grid_1km_2D:SolarZenith_1 SolarZenith_1.vrt
+gdal_translate -of VRT -outsize 200% 200% HDF4_EOS:EOS_GRID:C:\Users\Jane\data\h18v04\MOD09GA\MOD09GA.A2007362.h18v04.005.hdf:MODIS_Grid_1km_2D:SolarAzimuth_1 SolarAzimuth_1.vrt
+gdal_translate -of VRT HDF4_EOS:EOS_GRID:C:\Users\Jane\data\h18v04\MOD09GA\MOD09GA.A2007362.h18v04.005.hdf:MODIS_Grid_500m_2D:sur_refl_b01_1 sur_refl_b01_1.vrt
+gdal_translate -of VRT HDF4_EOS:EOS_GRID:C:\Users\Jane\data\h18v04\MOD09GA\MOD09GA.A2007362.h18v04.005.hdf:MODIS_Grid_500m_2D:sur_refl_b02_1 sur_refl_b02_1.vrt
+gdal_translate -of VRT HDF4_EOS:EOS_GRID:C:\Users\Jane\data\h18v04\MOD09GA\MOD09GA.A2007362.h18v04.005.hdf:MODIS_Grid_500m_2D:sur_refl_b03_1 sur_refl_b03_1.vrt
+gdal_translate -of VRT HDF4_EOS:EOS_GRID:C:\Users\Jane\data\h18v04\MOD09GA\MOD09GA.A2007362.h18v04.005.hdf:MODIS_Grid_500m_2D:sur_refl_b04_1 sur_refl_b04_1.vrt
+gdal_translate -of VRT HDF4_EOS:EOS_GRID:C:\Users\Jane\data\h18v04\MOD09GA\MOD09GA.A2007362.h18v04.005.hdf:MODIS_Grid_500m_2D:sur_refl_b05_1 sur_refl_b05_1.vrt
+gdal_translate -of VRT HDF4_EOS:EOS_GRID:C:\Users\Jane\data\h18v04\MOD09GA\MOD09GA.A2007362.h18v04.005.hdf:MODIS_Grid_500m_2D:sur_refl_b06_1 sur_refl_b06_1.vrt
+gdal_translate -of VRT HDF4_EOS:EOS_GRID:C:\Users\Jane\data\h18v04\MOD09GA\MOD09GA.A2007362.h18v04.005.hdf:MODIS_Grid_500m_2D:sur_refl_b07_1 sur_refl_b07_1.vrt

@@ -111,7 +111,7 @@ class SciDataRecords:
         return self.m_lookup[key][0], self.m_lookup[key][1]
 
     @staticmethod
-    def get_gdalmerge_filenames(self):
+    def get_gdalmerge_filenames():
         """
         Get the names of the three types of vrt file for GDAL merging.
         Use the enum index defined above to access them.
