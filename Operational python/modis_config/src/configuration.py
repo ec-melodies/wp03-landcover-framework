@@ -83,7 +83,7 @@ class Configuration:
         self.m_processed_data = ""              # optional location for user to place processed data files
         self.m_end_day = 0                      # end day for data retrieval (default 365)
         self.m_day_counter = 0                  # incremental day counter for iterating data archive
-        self.m_data_dir = ""                    # used in creating URL for data location
+        self.m_web_data_dir = ""                    # used in creating URL for data location
         self.m_version = ""                     # used in creating URL for data location
         self.m_time_step = 0                    # time step for incrementing the day counter according to product
         self.m_nproc = 0                        # number of processes to spawn for gdal manipulation
@@ -99,7 +99,6 @@ class Configuration:
         :return: no return
         :raise: IOError if the config. file is not found.
         """
-        # TODO check values for None which indicates a missing setting. raise exception.
         try:
             if config_file != self.m_config:
                 self.m_config = config_file
@@ -108,27 +107,33 @@ class Configuration:
 
             if mode == 0:
                 section = self.cfg['download']
-                self.m_product = section.get('product')
                 self.m_user = section.get('user')
                 self.m_passwd = section.get('password')
-                if self.m_product is None or self.m_user is None or self.m_passwd is None:
+                if self.m_user is None or self.m_passwd is None:
                     raise RuntimeError
+
             elif mode == 1:
                 section = self.cfg['MODISprocess']
-                self.m_processed_data = section.get('processed')
                 self.m_nproc = section.getint('nproc', 1)
 
+            # tile & product need to be set for the data directory for both modes
+            # but may be over-ridden by default section
+            self.m_product = section.get('product')
             self.m_tile = section.get('tile')
+            if self.m_product is None or self.m_tile is None:
+                    raise RuntimeError
+            self.set_rawdata_dir(section.get('datastore'))
+
+            if mode == 1:
+                self.set_gdal_dir(section.get('processed'))
+
             self.m_year = section.getint('year')
             if self.m_tile is None or self.m_year is None:
                 raise RuntimeError
 
             self.m_DoY = section.getint('DoYstart', 1)
             self.m_end_day = section.getint('DoYend', 365)
-
             self.m_day_counter = self.m_DoY
-
-            self.set_directory(section.get('datastore'))
 
             self.__set_constants()
 
@@ -138,7 +143,7 @@ class Configuration:
             # if there is no saved config, need to tell the caller
             raise io_err
 
-    def set_directory(self, dir):
+    def set_rawdata_dir(self, dir):
         """
         Creates folder specified.
         :param dir: Valid name for a directory.
@@ -152,9 +157,26 @@ class Configuration:
 
         self.m_data_store += self.m_tile + os.path.sep + self.m_product + os.path.sep
 
-        # and that the directories are made
+        # ensure the directories are made
         if not os.path.exists(self.m_data_store):
             os.makedirs(self.m_data_store)
+            os.chmod(self.m_data_store, 0777)
+
+    def get_rawdata_dir(self):
+        return self.m_data_store
+
+    def set_gdal_dir(self, dir):
+        if str(dir) != '' and dir is not None:
+            self.m_processed_data = os.getcwd() + os.path.sep + \
+                                    str(dir).replace("\\", os.path.sep) + os.path.sep
+        else:
+            self.m_processed_data = self.m_data_store + 'VRTs' + os.path.sep
+
+        if not os.path.exists(self.m_processed_data):
+            os.makedirs(self.m_processed_data)
+
+    def get_gdal_dir(self):
+        return self.m_processed_data
 
     def get_tile(self):
         """
@@ -180,6 +202,18 @@ class Configuration:
         """
         return self.m_passwd
 
+    def get_product(self):
+        return self.m_product
+
+    def get_year(self):
+        return self.m_year
+
+    def get_doy_range(self):
+        return self.m_DoY, self.m_end_day
+
+    def get_num_proc(self):
+        return self.m_nproc
+
     def __set_constants(self):
         """
         Set instance properties for constants.
@@ -187,13 +221,13 @@ class Configuration:
         """
         self.m_version = const.data_version                     # "005"
         if str(self.m_product).startswith(const.product_MOD):   # 'MOD'):
-            self.m_data_dir = const.data_dir_MOD                # "MOLT"
+            self.m_web_data_dir = const.data_dir_MOD                # "MOLT"
             self.m_time_step = const.timestep_MOD               # 1
         elif str(self.m_product).startswith(const.product_MYD): # 'MYD'):
-            self.m_data_dir = const.data_dir_MYD                # "MOLA"
+            self.m_web_data_dir = const.data_dir_MYD                # "MOLA"
             self.m_time_step = const.timestep_MYD               # 1
         else:
-            self.m_data_dir = const.data_dir_other              # "MOTA"
+            self.m_web_data_dir = const.data_dir_other              # "MOTA"
             self.m_time_step = const.timestep_other             # 8
 
     def create_local_filenames(self):
@@ -250,6 +284,6 @@ class Configuration:
         # convert current DoY into a date
         date = datetime.datetime(self.m_year, 1, 1) + datetime.timedelta(self.m_day_counter - 1)
         # create string
-        web_string = (webSrc.data_addr_root + self.m_data_dir + '/' + self.m_product +
+        web_string = (webSrc.data_addr_root + self.m_web_data_dir + '/' + self.m_product +
                       '.' + self.m_version + '/' + date.strftime('%Y.%m.%d'))
         return web_string
