@@ -7,7 +7,8 @@
 # Original author: Jane
 # 
 #######################################################
-import urllib2, base64
+import urllib2
+import base64
 import os
 
 """
@@ -60,7 +61,7 @@ class WebpageAccess:
         Must be done prior to any web-page access.
 
         :param config: a configuration:Configuration instance
-        :return:
+        :return: no return
         """
         self.m_config = config
 
@@ -89,11 +90,10 @@ class WebpageAccess:
 
             # check whether the files have already been downloaded
             for target in local_filenames:
-                if os.path.isfile('./' + target):
+                if os.path.isfile(target):
                     print("File already exists {}".format(target))
-                    raise RuntimeError("File already exists {}".format(target))
-
-            self.retrieve_data_files(parent_web_page, self.m_config.get_tile(), local_filenames)
+                else:
+                    self.retrieve_data_files(parent_web_page, self.m_config.get_tile(), local_filenames)
 
             # increment to next DoY
             self.m_config.next_day()
@@ -104,7 +104,7 @@ class WebpageAccess:
         Copy contents of page at given address and save to text file.
 
         :param address: web page to scrape
-        :return:
+        :return: no return
         """
         # Get the file list from the pre-defined web page and put into temporary file
         self.__download_page(address, self.m_web_text_file_name)
