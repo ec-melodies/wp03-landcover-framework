@@ -9,6 +9,7 @@
 #######################################################
 import urllib2
 import base64
+import cookielib
 import os
 
 """
@@ -147,17 +148,30 @@ class WebpageAccess:
         :param destination_file: target local file
         :return: no return
         """
-
+        # This was working and then started giving the following error:
+        #   HTTPError: HTTP Error 302: The HTTP server returned a redirect error that would lead to an infinite loop.
+        #   The last 30x error message was:
+        #   Found
+        # Addition of 'CookieJar' and 'opener' are to fix.
+        # See:
+        #   http://stackoverflow.com/questions/9113652/how-do-i-set-cookies-using-python-urlopen
+        #   http://stackoverflow.com/questions/9926023/handling-rss-redirects-with-python-urllib2
+        #   http://stackoverflow.com/questions/5606083/how-to-set-and-retrieve-cookie-in-http-header-in-python
+        # Also see https://wiki.earthdata.nasa.gov/display/EL/How+To+Access+Data+With+Python for a very long-winded
+        # way of doing the same thing!
         try:
             if self.m_test_mode != 'Git':
                 request = urllib2.Request(address)
                 base64string = base64.b64encode('%s:%s' % (self.m_config.get_user(), self.m_config.get_passwd()))
                 request.add_header("Authorization", "Basic %s" % base64string)
-                response = urllib2.urlopen(request)
+                cj = cookielib.CookieJar()
+                opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+                response = opener.open(request)
             else:
                 response = urllib2.urlopen(address)
 
             with open(destination_file, 'w') as f:
+                # if we are in Real test mode and getting data (rather than the scrape web page), limit to 1000 bytes
                 if self.m_test_mode == 'Real' and destination_file != self.m_web_text_file_name:
                     f.write(response.read(1000))
                 else:
