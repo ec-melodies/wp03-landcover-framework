@@ -93,8 +93,9 @@ class WebpageAccess:
             for target in local_filenames:
                 if os.path.isfile(target):
                     print("File already exists {}".format(target))
-                else:
-                    self.retrieve_data_files(parent_web_page, self.m_config.get_tile(), local_filenames)
+                    break
+            else: # this executes if no break is encountered in the 'for' loop
+                self.retrieve_data_files(parent_web_page, self.m_config.get_tile(), local_filenames)
 
             # increment to next DoY
             self.m_config.next_day()
