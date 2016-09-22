@@ -115,10 +115,14 @@ class SciDataRecords:
         """
         Get the names of the three types of vrt file for GDAL merging.
         Use the enum index defined above to access them.
-        :return: tuple containing three file names
+        :return: list containing three file names
         """
-        # order corresponds to File_index enum above
-        return 'sur_refl', 'Zenith', 'Azimuth'
+        # Note that this may look long-winded but it is robust: the list order is controlled only by the enum.
+        filenames = [None] * 3
+        filenames[File_index.sur_refl] = 'sur_refl'
+        filenames[File_index.Zenith] = 'Zenith'
+        filenames[File_index.Azimuth] = 'Azimuth'
+        return filenames
 
     def get_QA_filename(self):
         """
