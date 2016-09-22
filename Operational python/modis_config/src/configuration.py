@@ -9,6 +9,7 @@
 #######################################################
 
 import datetime
+import calendar
 import os
 import json
 import configparser
@@ -132,7 +133,13 @@ class Configuration:
                 raise RuntimeError
 
             self.m_DoY = section.getint('DoYstart', 1)
-            self.m_end_day = section.getint('DoYend', 365)
+            # check what a missing DoYend value should take depending on whether we have a leap year
+            # No correction made for user putting in 366 for a non-leap year.
+            if calendar.isleap(int(self.m_year)):
+                self.m_end_day = section.getint('DoYend', 366)
+            else:
+                self.m_end_day = section.getint('DoYend', 365)
+
             self.m_day_counter = self.m_DoY
 
             self.__set_constants()
