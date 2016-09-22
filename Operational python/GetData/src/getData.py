@@ -99,8 +99,6 @@ def main(args, testing_args=False):
     # if args.save:
     #     config.write_config(args.save)
 
-    return testing_args
-
 if __name__ == '__main__':
     if is_website_live():
         parse_args = create_parser()
