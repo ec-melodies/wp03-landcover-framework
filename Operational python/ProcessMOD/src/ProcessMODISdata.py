@@ -46,9 +46,9 @@ def main(args):
     # if we're given a file, load the info.
     try:
         if args.file != cfg_const.defs['file']:
-            config.read_config(1, args.file)
+            config.read_config(cfg.Config_mode.MODISproc, args.file)
         else:
-            config.read_config(1, cfg_const.defs['file'])
+            config.read_config(cfg.Config_mode.MODISproc, cfg_const.defs['file'])
     except IOError:
         print("Missing configuration file. Exiting.")
         sys.exit(1)

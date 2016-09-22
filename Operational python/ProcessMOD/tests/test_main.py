@@ -10,6 +10,7 @@ from multiprocessing import Queue
 import subprocess
 from ProcessMOD.src.processMODISdata import main, create_parser
 from modis_config.src.configuration import Configuration
+from modis_config.src.configuration import Config_mode
 from modis_config.src.constants import defs as constants
 import GetData.src.getData as get_data
 import ProcessMOD.src.sci_data_records as sdrs
@@ -71,12 +72,12 @@ def test_success_default_ini_file():
 
 # Test the gdal processing methods
 def test_gdal_default_folder():
-    cfg = set_up_config(1, constants['file'])   # process mode
+    cfg = set_up_config(Config_mode.MODISproc, constants['file'])   # process mode
     expected_folder = os.path.expanduser('~') + '\data\h18v04\MOD09GA' + os.path.sep + 'VRTs' + os.path.sep
     ns.assert_equals(cfg.get_gdal_dir(), expected_folder)
 
 def test_gdal_prcs_section_folder():
-    cfg = set_up_config(1, 'land_cover_config_test_gdal.ini')   # process mode
+    cfg = set_up_config(Config_mode.MODISproc, 'land_cover_config_test_gdal.ini')   # process mode
     expected_folder = os.getcwd() + os.path.sep + '.\gdal_files' + os.path.sep
     ns.assert_equals(cfg.get_gdal_dir(), expected_folder)
 
@@ -100,7 +101,7 @@ def test_gdal_processing_days():
 def test_gdal_processing_queue():
     # get days 362, 363, and 364 using get_data_to_manipulate()
     # process days 362 to 365 (which latter is default when no DoYend is set)
-    cfg = set_up_config(1, 'land_cover_config_test_gdal.ini')   # process mode
+    cfg = set_up_config(Config_mode.MODISproc, 'land_cover_config_test_gdal.ini')   # process mode
     # create expected queue
     expected_q = Queue()
     # use config to get target filenames and doy range
@@ -127,7 +128,7 @@ def test_gdal_do_work():
     test_dir = os.getcwd()
     # get days 362, 363, and 364 using get_data_to_manipulate()
     # process days 362 to 365 (which latter is default when no DoYend is set)
-    cfg = set_up_config(1, 'land_cover_config_test_gdal.ini')   # process mode
+    cfg = set_up_config(Config_mode.MODISproc, 'land_cover_config_test_gdal.ini')   # process mode
     # create expected queue - only need one item this time
     q = Queue()
     # use config to get target filename and doy
@@ -146,14 +147,14 @@ def test_gdal_do_work():
 def test_gdal_create_layerstacks():
     # this test raises the system exit as there are no files to process
     proc = g_proc.GdalProcessing()
-    cfg = set_up_config(1, 'land_cover_config_test_gdal.ini')   # process mode
+    cfg = set_up_config(Config_mode.MODISproc, 'land_cover_config_test_gdal.ini')   # process mode
     proc.set_config_object(cfg)
     proc._create_layerstacks(os.getcwd())
 
 @ns.with_setup(teardown=clean_up)
 def test_gdal_move_results():
     proc = g_proc.GdalProcessing()
-    cfg = set_up_config(1, 'land_cover_config_test_gdal.ini')   # process mode
+    cfg = set_up_config(Config_mode.MODISproc, 'land_cover_config_test_gdal.ini')   # process mode
     sdr = sdrs.SciDataRecords()
     proc.set_config_object(cfg)
     # create the files

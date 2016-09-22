@@ -19,6 +19,7 @@ import nose.tools as ns
 
 from GetData.src.getData import main, create_parser, is_website_live
 from modis_config.src.configuration import Configuration
+from modis_config.src.configuration import Config_mode
 from modis_config.src.constants import defs as constants
 
 def setup():
@@ -46,7 +47,7 @@ def set_up_config(mode, the_file):
 # Unit test some of the more complex methods
 @ns.with_setup(teardown=clean_up)
 def test_default_raw_folder():
-    cfg = set_up_config(0, constants['file'])   # download mode
+    cfg = set_up_config(Config_mode.download, constants['file'])   # download mode
     # default dir is ~/data/[tile]/[product]
     # which will expand to [user]/data/h18v04/MOD09GA
     expected_folder = os.path.expanduser('~') + '\data\h18v04\MOD09GA' + os.path.sep
@@ -54,19 +55,19 @@ def test_default_raw_folder():
 
 @ns.with_setup(teardown=clean_up)
 def test_dwnld_section_raw_folder():
-    cfg = set_up_config(0, 'land_cover_config_test_download_locPosix.ini')
+    cfg = set_up_config(Config_mode.download, 'land_cover_config_test_download_locPosix.ini')
     expected_folder = './data1\h18v04\MOD09GA' + os.path.sep
     ns.assert_equals(cfg.get_rawdata_dir(), expected_folder)
 
 @ns.with_setup(teardown=clean_up)
 def test_dflt_section_raw_folder():
-    cfg = set_up_config(0, 'land_cover_config_test_download_locWin.ini')
+    cfg = set_up_config(Config_mode.download, 'land_cover_config_test_download_locWin.ini')
     expected_folder = '.\data2\h18v04\MOD09GA' + os.path.sep
     ns.assert_equals(cfg.get_rawdata_dir(), expected_folder)
 
 @ns.with_setup(teardown=clean_up)
 def test_local_filenames():
-    cfg = set_up_config(0, constants['file'])   # download mode
+    cfg = set_up_config(Config_mode.download, constants['file'])   # download mode
     expected_folder = os.path.expanduser('~') + '\data\h18v04\MOD09GA' + os.path.sep
     expected_filename1 = expected_folder + 'MOD09GA.A2007360.h18v04.005.hdf'
     expected_filename2 = expected_folder + 'MOD09GA.A2007360.h18v04.005.hdf.xml'
@@ -75,7 +76,7 @@ def test_local_filenames():
 
 @ns.with_setup(teardown=clean_up)
 def test_web_page_addr():
-    cfg = set_up_config(0, constants['file'])   # download mode
+    cfg = set_up_config(Config_mode.download, constants['file'])   # download mode
     # products starting with 'MOD' require the 'MOLT' download area
     expected_web_addr = 'http://e4ftl01.cr.usgs.gov/MOLT/MOD09GA.005/2007.12.26'
     web_addr = cfg.create_URL()

@@ -26,6 +26,14 @@ CLASSES
     Configuration
 """
 
+"""
+Enumeration to indicate mode for configuration
+"""
+def enum(**enums):
+    return type('Enum', (), enums)
+
+Config_mode = enum(download=0, MODISproc=1)
+
 class Configuration:
     """
     Class to set up paths and URLs to find required data. Also dataset type and tile, plus
@@ -106,14 +114,14 @@ class Configuration:
             f = open(self.m_config)
             self.cfg.read_file(f)
 
-            if mode == 0:
+            if mode == Config_mode.download:
                 section = self.cfg['download']
                 self.m_user = section.get('user')
                 self.m_passwd = section.get('password')
                 if self.m_user is None or self.m_passwd is None:
                     raise RuntimeError
 
-            elif mode == 1:
+            elif mode == Config_mode.MODISproc:
                 section = self.cfg['MODISprocess']
                 self.m_nproc = section.getint('nproc', 1)
 

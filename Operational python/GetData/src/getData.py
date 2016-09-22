@@ -73,9 +73,9 @@ def main(args, testing_args=False):
     # if we're given a file, load the info. otherwise load the default one anyway
     try:
         if args.file != cfg_const.defs['file']:
-            config.read_config(0, args.file)
+            config.read_config(cfg.Config_mode.download, args.file)
         else:
-            config.read_config(0, cfg_const.defs['file'])
+            config.read_config(cfg.Config_mode.download, cfg_const.defs['file'])
     except IOError:
         print("Missing configuration file. Exiting.")
         sys.exit(1)
