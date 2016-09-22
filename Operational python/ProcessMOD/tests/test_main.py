@@ -17,7 +17,7 @@ import ProcessMOD.src.gdal_processing as g_proc
 import gdal_vrtmerge as gmerge
 
 # ensure the file system is clear of test and intermediate files/folders
-def test_clean_up():
+def clean_up():
     try:
         for dr in glob.glob('.\data*'):
             os.chmod(dr, 0777)
@@ -33,9 +33,12 @@ def test_clean_up():
         raise ex
 
 def get_data_to_manipulate():
-    # download files for DoY 362, 363, and 364 - only first 1000 bytes
-    args = get_data.create_parser(['-file', 'land_cover_config_test.ini', '-test', 'Real'])
-    get_data.main(args)
+    if get_data.is_website_live():
+        # download files for DoY 362, 363, and 364 - only first 1000 bytes
+        args = get_data.create_parser(['-file', 'land_cover_config_test.ini', '-test', 'Real'])
+        get_data.main(args)
+    else:
+        ns.assert_true(False, msg="Website down, unable to run test")
 
 def set_up_config(mode, the_file):
     config = Configuration()
@@ -61,8 +64,8 @@ def test_sci_data_merge_filenames():
     sdr = sdrs.SciDataRecords()
     ns.assert_equal(sdr.get_gdalmerge_filenames()[sdrs.File_index.Zenith], 'Zenith')
 
+@ns.with_setup(setup=get_data_to_manipulate, teardown=clean_up)
 def test_success_default_ini_file():
-    get_data_to_manipulate()
     args = create_parser(['-test'])
     ns.assert_is_none(main(args))
 
@@ -78,24 +81,24 @@ def test_gdal_prcs_section_folder():
     ns.assert_equals(cfg.get_gdal_dir(), expected_folder)
 
 @ns.raises(SystemExit)
+@ns.with_setup(setup=get_data_to_manipulate, teardown=clean_up)
 def test_gdal_processing_year():
-    # get days 362, 363, and 364 in year 2007
-    get_data_to_manipulate()
+    # get days 362, 363, and 364 in year 2007 using get_data_to_manipulate()
     # but set year to process as 2006
     args = create_parser(['-file', 'land_cover_config_test_year.ini', '-test'])
     main(args)
 
 @ns.raises(SystemExit)
+@ns.with_setup(setup=get_data_to_manipulate, teardown=clean_up)
 def test_gdal_processing_days():
-    # get days 362, 363, and 364 in year 2007
-    get_data_to_manipulate()
+    # get days 362, 363, and 364 in year 2007 using get_data_to_manipulate()
     # but set days to process as 100 to 110
     args = create_parser(['-file', 'land_cover_config_test_days.ini', '-test'])
     main(args)
 
+@ns.with_setup(setup=get_data_to_manipulate, teardown=clean_up)
 def test_gdal_processing_queue():
-    # get days 362, 363, and 364
-    get_data_to_manipulate()
+    # get days 362, 363, and 364 using get_data_to_manipulate()
     # process days 362 to 365 (which latter is default when no DoYend is set)
     cfg = set_up_config(1, 'land_cover_config_test_gdal.ini')   # process mode
     # create expected queue
@@ -118,11 +121,11 @@ def test_gdal_processing_queue():
         the_item = the_queue.get()
         ns.assert_tuple_equal(the_item, expected_item)
 
+@ns.with_setup(setup=get_data_to_manipulate, teardown=clean_up)
 def test_gdal_do_work():
     # this does chdir to subprocess: remains in that dir for next tests so fails on next but one test where needs config
     test_dir = os.getcwd()
-    # get days 362, 363, and 364
-    get_data_to_manipulate()
+    # get days 362, 363, and 364 using get_data_to_manipulate()
     # process days 362 to 365 (which latter is default when no DoYend is set)
     cfg = set_up_config(1, 'land_cover_config_test_gdal.ini')   # process mode
     # create expected queue - only need one item this time
@@ -147,6 +150,7 @@ def test_gdal_create_layerstacks():
     proc.set_config_object(cfg)
     proc._create_layerstacks(os.getcwd())
 
+@ns.with_setup(teardown=clean_up)
 def test_gdal_move_results():
     proc = g_proc.GdalProcessing()
     cfg = set_up_config(1, 'land_cover_config_test_gdal.ini')   # process mode
