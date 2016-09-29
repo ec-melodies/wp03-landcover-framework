@@ -1,7 +1,7 @@
 __author__ = 'Jane'
 
 """
-Enumeration to index into filename tuple
+Enumeration to index into filename array
 """
 def enum(**enums):
     return type('Enum', (), enums)
