@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE GranuleMetaDataFile SYSTEM "http://ecsinfo.gsfc.nasa.gov/ECSInfo/ecsmetadata/dtds/DPL/ECS/ScienceGranuleMetadata.dtd">
+
+<GranuleMetaDataFile>
+    <DTDVersion>1.0</DTDVersion>
+    <DataCenterId>EDC</DataCenterId>
+    <GranuleURMetaData>
+        <GranuleUR>SC:MOD09GA.005:2064653281</GranuleUR>
+        <DbID>2064653281</DbID>
+        <InsertTime>2008-08-23 23:00:44.550</InsertTime>
+        <LastUpdate>2008-12-08 10:04:50.493</LastUpdate>
+        <CollectionMetaData>
+            <ShortName>MOD09GA</ShortName>
+            <VersionID>5</VersionID>
+        </CollectionMetaData>
+        <DataFiles>
+            <DataFileContainer>
+                <DistributedFileName>MOD09GA.A2000072.h14v02.005.2008237034113.hdf</DistributedFileName>
+                <FileSize>164438260</FileSize>
+                <ChecksumType>CKSUM</ChecksumType>
+                <Checksum>4097299690</Checksum>
+                <ChecksumOrigin>DataProvider</ChecksumOrigin>
+        
