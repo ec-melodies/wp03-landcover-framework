@@ -16,11 +16,11 @@ data_file_ext = 'hdf'
 data_files_to_retrieve = 2
 
 # Files appear on the parent listing page with entries like this (on one line):
-# <img src="/icons/unknown.gif" alt="[   ]"> <a href="MOD09GA.A2007364.h18v04.005.2008001234502.hdf">
+# <img src_java="/icons/unknown.gif" alt="[   ]"> <a href="MOD09GA.A2007364.h18v04.005.2008001234502.hdf">
 #                              MOD09GA.A2007364.h18v04.005.2008001234502.hdf</a> 2009-04-20 20:21 89M
 # so to find the actual file name, we need to split the string on spaces to give:
 # ['<img',
-#  'src="/icons/unknown.gif"',
+#  'src_java="/icons/unknown.gif"',
 #  'alt="[',
 #  ']">',
 #  '<a',

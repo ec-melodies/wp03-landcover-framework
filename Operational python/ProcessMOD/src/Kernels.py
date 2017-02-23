@@ -685,7 +685,7 @@ def LiFunctionForIntegral(phi,mu,sza,self):
 #                 clf()
 #                 xlabel('View Zenith Angle')
 #                 ylabel('Kernel Value')
-#                 title('Solar Zenith Angle ' + str(sza) + ' Degrees')
+#                 _title('Solar Zenith Angle ' + str(sza) + ' Degrees')
 #                 plot(x,y)
 #                 plot(kk.vzaDegrees, RossThick[i,:],label='RThick')
 #                 plot(kk.vzaDegrees, RossThin[i,:],label='RThin')
