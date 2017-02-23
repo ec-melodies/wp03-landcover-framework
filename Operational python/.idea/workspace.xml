@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/../../../PycharmProjects/Level1/6_UsingNose/class_tests/classAtests.py" line="3" />
+    <bookmark url="file://$PROJECT_DIR$/../../../PycharmProjects/Level1/6_UsingNose/class_tests/classAtests.py" line="38" />
+    <bookmark url="file://$PROJECT_DIR$/../../../PycharmProjects/Level2/LibrarySystem_v2/src/item_list.py" line="90" />
+    <bookmark url="file://$PROJECT_DIR$/../../../PycharmProjects/Level2/LibrarySystem_v2/src/item.py" line="81" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="95f8a174-0b42-48c7-97b0-27202aa0465c" name="Default" comment="Add fixtures to tests">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProcessMOD/src/sci_data_records.py" afterPath="$PROJECT_DIR$/ProcessMOD/src/sci_data_records.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../MODIS/MOD09/TimeSeriesAnalysis/�" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../PycharmProjects/Level2/LibrarySystem/item.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../covjson-validator/src/CovgValidator.py" afterPath="$PROJECT_DIR$/../../covjson-validator/src/CovgValidator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Melodies.iml" afterPath="$PROJECT_DIR$/.idea/Melodies.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GetData/src/LPDAAC_website.py" afterPath="$PROJECT_DIR$/GetData/src/LPDAAC_website.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProcessMOD/src/Kernels.py" afterPath="$PROJECT_DIR$/ProcessMOD/src/Kernels.py" />
     </list>
     <ignored path="Operational python.iws" />
-    <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/" />
-    <ignored path="../Melodies scripts.txt" />
-    <ignored path="USE THIS FOLDER FOR UPLOAD TO GITHUB.txt" />
     <ignored path="../Github.url" />
+    <ignored mask="*.pyc" />
+    <ignored path="EA_model_design/Desktop.ini" />
+    <ignored path="../../genson/Git_src_for_GenSON.url" />
+    <ignored path="../../melodies_json_jonblower/.idea/Melodies_JSON_jonblower.iml" />
+    <ignored path="../../melodies_json_jonblower/.idea/" />
+    <ignored path="../../genson/.idea/" />
+    <manually-removed-from-ignored>
+      <directory path="./Operational python/.idea/" />
+    </manually-removed-from-ignored>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +38,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="ChangesViewManager" show_ignored="true" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -27,90 +47,34 @@
     <favorites_list name="Operational python" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="configuration.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modis_config/src/configuration.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="JSONCheck.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/JSONCheck.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="123" column="46" selection-start-line="123" selection-start-column="37" selection-end-line="123" selection-end-column="46" />
+            <state relative-caret-position="204">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getData.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GetData/src/getData.py">
+      <file leaf-file-name="CovgValidator.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/CovgValidator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="75" column="47" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="47" />
+            <state relative-caret-position="190">
+              <caret line="27" column="57" lean-forward="false" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
               <folding>
-                <element signature="e#312#322#0" expanded="true" />
+                <element signature="e#294#311#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GetData/tests/test_main.py">
+      <file leaf-file-name="command.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../genson/bin/command.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
-              <folding>
-                <element signature="e#418#431#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="processMODISdata.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProcessMOD/src/processMODISdata.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="56" selection-start-line="50" selection-start-column="56" selection-end-line="50" selection-end-column="56" />
-              <folding>
-                <element signature="e#298#308#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gdal_processing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProcessMOD/src/gdal_processing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="268" column="87" selection-start-line="268" selection-start-column="87" selection-end-line="268" selection-end-column="87" />
-              <folding>
-                <element signature="e#22#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dataset_info.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ProcessMOD/src/dataset_info.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44371942">
-              <caret line="16" column="21" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sci_data_records.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProcessMOD/src/sci_data_records.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProcessMOD/tests/test_main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -125,72 +89,106 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>&amp;</find>
+      <find>&amp;amp</find>
+      <find>misce</find>
+      <find>respond</find>
+      <find>respondents</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>&amp;#8226</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../genson" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/modis_config/src/configFileManager.py" />
-        <option value="$PROJECT_DIR$/GetData/src/landCoverDataManager.py" />
-        <option value="$PROJECT_DIR$/ProcessMOD/first_script_ProcessMOD09.sh" />
-        <option value="$PROJECT_DIR$/ProcessMOD/src/ProcessMODISdata.py" />
-        <option value="$PROJECT_DIR$/modis_config/src/processConfig.py" />
-        <option value="$PROJECT_DIR$/modis_config/src/configMODISprocess.py" />
-        <option value="$PROJECT_DIR$/GetData/scratch/configuration.py" />
-        <option value="$PROJECT_DIR$/modis_config/land_cover_config_missing_settings.ini" />
-        <option value="$PROJECT_DIR$/GetData/tests/land_cover_config_missing_settings.ini" />
-        <option value="$PROJECT_DIR$/GetData/tests/land_cover_config_missing_setting.ini" />
-        <option value="$PROJECT_DIR$/GetData/scratch/config_play.py" />
-        <option value="$PROJECT_DIR$/modis_config/src/constants.py" />
-        <option value="$PROJECT_DIR$/GetData/scratch/queueing.py" />
-        <option value="C:/Python27/Lib/site-packages/gdal_vrtmerge.py" />
-        <option value="$PROJECT_DIR$/GetData/scratch/process_Q.py" />
-        <option value="$PROJECT_DIR$/ProcessMOD/scratch/DataHandling.py" />
-        <option value="$PROJECT_DIR$/ProcessMOD/scratch/Kernels.py" />
-        <option value="$PROJECT_DIR$/ProcessMOD/src/MOD09GA_op.py" />
-        <option value="$PROJECT_DIR$/ProcessMOD/src/dataset_info.py" />
-        <option value="$PROJECT_DIR$/ProcessMOD/scratch/second_script_MOD09_Masking_By_QA_KernelCalc.sh" />
-        <option value="$PROJECT_DIR$/GetData/tests/land_cover_config_test_download.ini" />
-        <option value="$PROJECT_DIR$/GetData/tests/land_cover_config_test_download_locPosix.ini" />
-        <option value="$PROJECT_DIR$/GetData/tests/land_cover_config_test_download_locWin.ini" />
-        <option value="$PROJECT_DIR$/GetData/tests/land_cover_config_real_download.ini" />
-        <option value="$PROJECT_DIR$/ProcessMOD/tests/land_cover_config_test_days.ini" />
-        <option value="$PROJECT_DIR$/ProcessMOD/tests/land_cover_config_test_year.ini" />
-        <option value="$PROJECT_DIR$/ProcessMOD/tests/land_cover_config_test_gdal.ini" />
-        <option value="$PROJECT_DIR$/ProcessMOD/scratch/calling_other_procs.py" />
-        <option value="$PROJECT_DIR$/ProcessMOD/src/gdal_processing.py" />
-        <option value="$PROJECT_DIR$/ProcessMOD/tests/land_cover_config_test.ini" />
-        <option value="$PROJECT_DIR$/GetData/scratch/odds_and_ends.py" />
-        <option value="$PROJECT_DIR$/ProcessMOD/src/Kernels.py" />
-        <option value="$PROJECT_DIR$/modis_config/land_cover_config.ini" />
-        <option value="$PROJECT_DIR$/GetData/src/webpageAccess.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/LibrarySystem_v2/src_skeleton_with_extras/library.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/LibrarySystem_v2/src_skeleton_with_extras/user.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/LibrarySystem_v2/src_skeleton_with_extras/user_manager.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/LibrarySystem_v2/src_skeleton_with_extras/user_list.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/UsingNose/class_code/classA.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/SWcourse2_java_code_patterns/src_python/info.txt" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/SWcourse2_java_code_patterns/src_python/factory.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/SWcourse2_java_code_patterns/src_python/iterator.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/LibrarySystem_v2/src/item.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/LibrarySystem_v2/src/user_list.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/LibrarySystem_v2/tests/testuserlist.py" />
         <option value="$PROJECT_DIR$/ProcessMOD/src/sci_data_records.py" />
-        <option value="$PROJECT_DIR$/modis_config/src/configuration.py" />
-        <option value="$PROJECT_DIR$/GetData/src/getData.py" />
-        <option value="$PROJECT_DIR$/GetData/tests/test_main.py" />
-        <option value="$PROJECT_DIR$/ProcessMOD/tests/test_main.py" />
-        <option value="$PROJECT_DIR$/ProcessMOD/src/processMODISdata.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/UsingNose/class_tests/classAtests.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/LibrarySystem_v2/src/item_list.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/SWcourse2_java_code_patterns/src_python/singleton.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/SWcourse2_java_code_patterns/src_python/visitor.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/LibrarySystem_v2/tests/testitemlist.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/Helloooooo/src/hello_simple.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/SortExercise/src/SortNumbers.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/SortExercise/src/SortIntegers.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/SortExercise/src/SortChars.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/SortExercise/src/SortAnything.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/SortExercise/src/SortAnything_4.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/SortExercise/src/SortChars_3.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/SortExercise/src/SortNumbers_2.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/StormTracks/src2/stormTracks.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/Demo/src/classes.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/TemperatureData/scr/temperature_main.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/GetTemperature/src/temperature_3.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/GetTemperature/src/temperature_1.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/GetTemperature/src/temperature_2.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/GetTemperature/src/temperature_4.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/GetTemperature/src/temperature_5.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/GetTemperature/src/config.ini" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/TemperatureData/scr/GetData.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/UsingNose/some_code/functions.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/UsingNose/all_tests/tests.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level2/Demo/src/exceptions.py" />
+        <option value="$PROJECT_DIR$/../../../PycharmProjects/Level1/SortExercise/src/SortIntegers_1.py" />
+        <option value="$USER_HOME$/Documents/05_ReSC/11_NERC short course/09_website/wiggins.home.webbie/resc/home/teaching/sw_development/feedback-inc.html" />
+        <option value="$PROJECT_DIR$/../../covjson-validator/src/ValidationDesign/checker_main.py" />
+        <option value="$PROJECT_DIR$/../../covjson-validator/src/JSON_validator/covg_nodes.py" />
+        <option value="$PROJECT_DIR$/../../covjson-validator/json_files/__info" />
+        <option value="$PROJECT_DIR$/../../covjson-validator/src/ValidationDesign/CovgCollValidator.py" />
+        <option value="$PROJECT_DIR$/../../covjson-validator/src/ValidationDesign/DomainValidator.py" />
+        <option value="$PROJECT_DIR$/../../covjson-validator/src/DomainValidator.py" />
+        <option value="$PROJECT_DIR$/../../covjson-validator/src/ParamValidator.py" />
+        <option value="$PROJECT_DIR$/../../covjson-validator/src/Validator.py" />
+        <option value="$PROJECT_DIR$/../../covjson-validator/src/CovgCollValidator.py" />
+        <option value="$PROJECT_DIR$/../../covjson-validator/src/JSONCheck.py" />
+        <option value="$PROJECT_DIR$/../../covjson-validator/src/CovgValidator.py" />
       </list>
     </option>
   </component>
-  <component name="NamedScopeManager">
-    <order />
-  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="55" />
-    <option name="width" value="1129" />
+    <option name="x" value="263" />
+    <option name="y" value="15" />
+    <option name="width" value="1143" />
     <option name="height" value="768" />
   </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyCompatibilityInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
     <ConfirmationsSetting value="1" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -203,6 +201,8 @@
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="ProjectPane">
@@ -212,18 +212,8 @@
               <option name="myItemId" value="Melodies" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Melodies" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Operational python" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modis_config" />
+              <option name="myItemId" value="genson" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -233,15 +223,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Operational python" />
+              <option name="myItemId" value="genson" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="modis_config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="bin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -251,11 +237,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Operational python" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProcessMOD" />
+              <option name="myItemId" value="covjson-validator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -266,108 +248,17 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Operational python" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProcessMOD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Melodies" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Operational python" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProcessMOD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Melodies" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Operational python" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GetData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Melodies" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Operational python" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GetData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Melodies" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Operational python" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GetData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Melodies" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Operational python" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EA_model_design" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="148" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="149" />
@@ -385,9 +276,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="772" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="restartRequiresConfirmation" value="true" />
-    <property name="FullScreen" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -397,115 +286,22 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jane\workspace\PycharmProjects\Level2\LibrarySystem\src" />
+      <recent name="C:\Users\Jane\workspace\PycharmProjects\Level2\LibrarySystem\docs" />
+      <recent name="C:\Users\Jane\workspace\PycharmProjects\Level1\GetTemperature\docs" />
+      <recent name="C:\Users\Jane\workspace\PycharmProjects\Level1\GetTemperature" />
+      <recent name="C:\Users\Jane\workspace\PycharmProjects\Level1\GetTemperature\src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\xw904346\workspace\Melodies_pycharm\covjson-validator\src\JSON_validator" />
+      <recent name="C:\Users\Jane\workspace\PycharmProjects\Level2\LibrarySystem_v2\src_skeleton" />
       <recent name="C:\Users\Jane\workspace\Melodies_scripts\Operational python\ProcessMOD\tests" />
       <recent name="C:\Users\Jane\workspace\Melodies_scripts\Operational python\ProcessMOD\scratch" />
       <recent name="C:\Users\Jane\workspace\Melodies_scripts\Operational python\GetData\tests" />
-      <recent name="C:\Users\Jane\workspace\Melodies_scripts\Operational python\modis_config" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Jane\workspace\Melodies_scripts\Operational python\ProcessMOD\scratch" />
-      <recent name="C:\Users\Jane\workspace\Melodies_scripts\Operational python\ProcessMOD\src" />
-      <recent name="C:\Users\Jane\workspace\Melodies_scripts\Operational python\GetData\tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Download unit tests">
-    <configuration default="false" name="configuration" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GetData/scratch" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Melodies" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GetData/scratch/configuration.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="queueing" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GetData/scratch" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Melodies" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GetData/scratch/queueing.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="process_Q" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GetData/scratch" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Melodies" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GetData/scratch/process_Q.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="odds_and_ends" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GetData/scratch" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Melodies" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GetData/scratch/odds_and_ends.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="calling_other_procs" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ProcessMOD/scratch" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Melodies" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProcessMOD/scratch/calling_other_procs.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="INTERPRETER_PATH" value="c:\cygwin\bin\bash.exe" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -521,6 +317,18 @@
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Melodies" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Attests">
@@ -726,191 +534,279 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <list size="10">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.config_play" />
       <item index="1" class="java.lang.String" itemvalue="Python.getData no args" />
       <item index="2" class="java.lang.String" itemvalue="Python.getData with args" />
       <item index="3" class="java.lang.String" itemvalue="Python tests.Download unit tests" />
       <item index="4" class="java.lang.String" itemvalue="Python tests.Process unit tests" />
-      <item index="5" class="java.lang.String" itemvalue="Python.configuration" />
-      <item index="6" class="java.lang.String" itemvalue="Python.queueing" />
-      <item index="7" class="java.lang.String" itemvalue="Python.process_Q" />
-      <item index="8" class="java.lang.String" itemvalue="Python.odds_and_ends" />
-      <item index="9" class="java.lang.String" itemvalue="Python.calling_other_procs" />
     </list>
-    <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.odds_and_ends" />
-        <item index="1" class="java.lang.String" itemvalue="Python.calling_other_procs" />
-        <item index="2" class="java.lang.String" itemvalue="Python.process_Q" />
-        <item index="3" class="java.lang.String" itemvalue="Python.queueing" />
-        <item index="4" class="java.lang.String" itemvalue="Python.configuration" />
-      </list>
-    </recent_temporary>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\xw904346\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="95f8a174-0b42-48c7-97b0-27202aa0465c" name="Default" comment="" />
       <created>1469537911566</created>
       <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
       <updated>1469537911566</updated>
     </task>
     <task id="LOCAL-00001" summary="Re-design, untested.">
       <created>1469543502450</created>
       <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1469543502450</updated>
     </task>
     <task id="LOCAL-00002" summary="Download with login; re-design tested.">
       <created>1469556556567</created>
       <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
       <updated>1469556556567</updated>
     </task>
     <task id="LOCAL-00003" summary="Download with login; re-design tested.">
       <created>1470926702643</created>
       <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
       <updated>1470926702643</updated>
     </task>
     <task id="LOCAL-00004" summary="INI file configuration, sub-folder creation. Tested.">
       <created>1471448342404</created>
       <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
       <updated>1471448342404</updated>
     </task>
     <task id="LOCAL-00005" summary="Spelling mistake corrected!">
       <created>1472142489983</created>
       <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
       <updated>1472142489983</updated>
     </task>
     <task id="LOCAL-00006" summary="gdal multi-processing with queue. Still to do MOD09GA script. Not tested.">
       <created>1472142812968</created>
       <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
       <updated>1472142812968</updated>
     </task>
     <task id="LOCAL-00007" summary="gdal multi-processing with queue. Still to do MOD09GA script. Not tested.">
       <created>1472142868174</created>
       <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1472142868174</updated>
     </task>
     <task id="LOCAL-00008" summary="Comment correction.">
       <created>1472142909820</created>
       <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
       <updated>1472142909820</updated>
     </task>
     <task id="LOCAL-00009" summary="Docstrings complete">
       <created>1472677871634</created>
       <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
       <updated>1472677871634</updated>
     </task>
     <task id="LOCAL-00010" summary="more comprehensive unit tests">
       <created>1472678048197</created>
       <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
       <updated>1472678048197</updated>
     </task>
     <task id="LOCAL-00011" summary="initial tests for gdal processing">
       <created>1472678194641</created>
       <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
       <updated>1472678194641</updated>
     </task>
     <task id="LOCAL-00012" summary="gdal processing: docstrings and OO re-write complete. not tested.">
       <created>1472678288839</created>
       <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
       <updated>1472678288839</updated>
     </task>
     <task id="LOCAL-00013" summary="bug fix in logic of downloading files.">
       <created>1473181095306</created>
       <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
       <updated>1473181095306</updated>
     </task>
     <task id="LOCAL-00014" summary="tidy and comment correction">
       <created>1473181183615</created>
       <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
       <updated>1473181183615</updated>
     </task>
     <task id="LOCAL-00015" summary="gdal tests added. dataset_info not tested.">
       <created>1473181279494</created>
       <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
       <updated>1473181279494</updated>
     </task>
     <task id="LOCAL-00016" summary="bug fixes and comments">
       <created>1473181367330</created>
       <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
       <updated>1473181367330</updated>
     </task>
     <task id="LOCAL-00017" summary="comments added">
       <created>1473181397342</created>
       <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
       <updated>1473181397342</updated>
     </task>
     <task id="LOCAL-00018" summary="Add cookie handling for LPDAAC website.">
       <created>1474455910044</created>
       <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
       <updated>1474455910045</updated>
     </task>
     <task id="LOCAL-00019" summary="Handle leap year for DoY end.">
       <created>1474537767439</created>
       <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
       <updated>1474537767439</updated>
     </task>
     <task id="LOCAL-00020" summary="Fix where checking for existing file and download were out of sync.">
       <created>1474560027972</created>
       <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
       <updated>1474560027972</updated>
     </task>
     <task id="LOCAL-00021" summary="More thorough testing of files and directories.">
       <created>1474560363276</created>
       <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
       <option name="project" value="LOCAL" />
       <updated>1474560363276</updated>
     </task>
     <task id="LOCAL-00022" summary="Remove implicit ordering of gdal file names">
       <created>1474561943332</created>
       <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
       <updated>1474561943332</updated>
     </task>
     <task id="LOCAL-00023" summary="Add fixtures to tests">
       <created>1474562139972</created>
       <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
       <updated>1474562139972</updated>
     </task>
     <task id="LOCAL-00024" summary="Use enum for configuration mode.">
       <created>1474573736670</created>
       <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
       <option name="project" value="LOCAL" />
       <updated>1474573736670</updated>
     </task>
     <task id="LOCAL-00025" summary="Add EA class diagrams">
       <created>1475074329925</created>
       <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
       <updated>1475074329925</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Re-organise folder structure.">
+      <created>1479809009661</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1479809009661</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Validator schema library.">
+      <created>1487242968605</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1487242968605</updated>
+    </task>
+    <task id="LOCAL-00028" summary="add git ignore">
+      <created>1487243997583</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1487243997583</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Slight updates">
+      <created>1487244143708</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1487244143708</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Trial enums for node types">
+      <created>1487261727732</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1487261727732</updated>
+    </task>
+    <task id="LOCAL-00031" summary="New design for validation">
+      <created>1487271675317</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1487271675317</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Library_itemtests - 2016.11.30 at 14h 57m 02s.xml">
+      <configuration name="Library_itemtests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Library_itemtests - 2016.11.30 at 15h 01m 59s.xml">
+      <configuration name="Library_itemtests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Library_itemtests - 2016.11.30 at 15h 03m 10s.xml">
+      <configuration name="Library_itemtests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Library_tests - 2016.11.30 at 14h 51m 36s.xml">
+      <configuration name="Library_tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Library_tests - 2016.11.30 at 14h 52m 24s.xml">
+      <configuration name="Library_tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_item_list_tests - 2016.11.30 at 14h 08m 25s.xml">
+      <configuration name="Unittests in item_list_tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_item_list_tests - 2016.11.30 at 14h 11m 00s.xml">
+      <configuration name="Unittests in item_list_tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="UsingNose_tests - 2017.01.26 at 11h 12m 18s.xml">
+      <configuration name="UsingNose_tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="UsingNose_tests - 2017.01.26 at 11h 20m 19s.xml">
+      <configuration name="UsingNose_tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="UsingNose_tests - 2017.01.26 at 11h 20m 55s.xml">
+      <configuration name="UsingNose_tests" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -922,29 +818,48 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="55" y="0" width="1129" height="768" extended-state="0" />
+    <frame x="263" y="15" width="1143" height="768" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2765568" sideWeight="0.78486997" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930845" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36641222" sideWeight="0.50408924" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3541985" sideWeight="0.49722" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2511774" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19301033" sideWeight="0.6666667" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22762951" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23048328" sideWeight="0.21513002" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43816793" sideWeight="0.4959108" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.61984736" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4412214" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.51265824" sideWeight="0.78486997" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45982143" sideWeight="0.42741117" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.54858935" sideWeight="0.52169985" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.54858935" sideWeight="0.47830018" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45454547" sideWeight="0.4944238" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19227675" sideWeight="0.6666667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27272728" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23048328" sideWeight="0.21513002" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4636752" sideWeight="0.4959108" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34767026" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24770643" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -958,10 +873,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Re-design, untested." />
-    <MESSAGE value="Download with login; re-design tested." />
-    <MESSAGE value="INI file configuration, sub-folder creation. Tested." />
-    <MESSAGE value="Spelling mistake corrected!" />
     <MESSAGE value="gdal multi-processing with queue. Still to do MOD09GA script. Not tested." />
     <MESSAGE value="Comment correction." />
     <MESSAGE value="Docstrings complete" />
@@ -981,7 +892,13 @@
     <MESSAGE value="Add fixtures to tests" />
     <MESSAGE value="Use enum for configuration mode." />
     <MESSAGE value="Add EA class diagrams" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add EA class diagrams" />
+    <MESSAGE value="Re-organise folder structure." />
+    <MESSAGE value="Validator schema library." />
+    <MESSAGE value="add git ignore" />
+    <MESSAGE value="Slight updates" />
+    <MESSAGE value="Trial enums for node types" />
+    <MESSAGE value="New design for validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="New design for validation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -996,8 +913,65 @@
           <line>159</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../PycharmProjects/Level1/4_StormTracks_and_debugging/src1/stormTracks.py</url>
+          <line>48</line>
+          <option name="timeStamp" value="115" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../PycharmProjects/Level1/4_StormTracks_and_debugging/src_OO_complex/main_storm.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="122" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../PycharmProjects/Level1/4_StormTracks_and_debugging/src_OO_complex/main_storm.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../PycharmProjects/Level2/LibrarySystem_v2/src/main.py</url>
+          <line>204</line>
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../PycharmProjects/Level1/4_StormTracks_and_debugging/src3/stormTracks.py</url>
+          <line>114</line>
+          <option name="timeStamp" value="147" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../PycharmProjects/Level1/3_GetTemperature/src/temperature_3.py</url>
+          <line>62</line>
+          <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../PycharmProjects/Level1/3_GetTemperature/src/temperature_5.py</url>
+          <line>33</line>
+          <option name="timeStamp" value="151" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/GetData/src/getData.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="python-exception">
+          <properties notifyOnTerminate="true" exception="src.lib_exceptions.CannotBorrowException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+          <option name="timeStamp" value="140" />
+        </breakpoint>
       </breakpoints>
-      <option name="time" value="111" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <default-breakpoints>
+        <breakpoint log-message="true" type="python-exception">
+          <properties notifyOnlyOnFirst="true" notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+            <option name="notifyOnlyOnFirst" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="153" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="tests">
@@ -1005,380 +979,329 @@
         <watch expression="self.m_user" />
         <watch expression="self.m_config" language="Python" />
       </configuration>
-      <configuration name="PythonConfigurationType">
-        <watch expression="self.m_passwd" />
-        <watch expression="self.m_user" />
-      </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/GetData/scratch/config_play.py">
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/collections.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3172338">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+        <state relative-caret-position="17">
+          <caret line="1" column="30" lean-forward="true" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/custom_axis_value_type.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/custom_domain.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/custom_field.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/custom_range.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/custom_reference_system.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/custom_unit_symbol.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/domain_single_point_part.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/domain_trajectory_part.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/domain_vertical_profile_part.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/domain_XYZT_grid_part.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/first_coverage.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/param_fraction_decimal.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/param_fraction_percent.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/param_qual_flags_part.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/range_values_part.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/spatial_domain_part.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/temp_param_2_part.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/temp_param_part.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/_custom_range.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/_domain_single_point_part.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/_domain_trajectory_part.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/ValidationDesign/DomainNodes.py" />
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/ValidationDesign/DomainValidator.py" />
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/ParametersNodes.py" />
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/CovgNodes.py" />
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/ValidationDesign/CovgNodes.py" />
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/ValidationDesign/Validator.py" />
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/JSON_validator/covg_nodes.py" />
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/JSON_validator/checker_main.py" />
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/DomainValidator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/ParamValidator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/checker_main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/Validator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/CovgCollValidator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-52">
+          <caret line="5" column="39" lean-forward="true" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/schemas/GenSON_custom_range.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/schemas/GenSON_range_values_part.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa0.129/netcdf_utils.py" />
+    <entry file="file://$PROJECT_DIR$/../../genson/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/CovgValidator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="27" column="57" lean-forward="false" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+          <folding>
+            <element signature="e#294#311#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/_domain_XYZT_grid_part.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#domain#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#parameters#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#ranges#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/source_json_files/_domain_vertical_profile_part.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#domain#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#parameters#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#ranges#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../covjson-validator/src/JSONCheck.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GetData/scratch/queueing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07981221">
-          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/nose/tools/nontrivial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/scratch/DataHandling.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetData/scratch/process_Q.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9409594">
-          <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../MODIS/MOD09/MOD09GA.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.5252855">
-          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/scratch/Kernels.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33227345">
-          <caret line="213" column="96" selection-start-line="213" selection-start-column="96" selection-end-line="213" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/scratch/first_script_ProcessMOD09.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9459459">
-          <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/scratch/second_script_MOD09_Masking_By_QA_KernelCalc.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5945946">
-          <caret line="102" column="26" selection-start-line="102" selection-start-column="19" selection-end-line="102" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_sys_patch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33116883">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/argparse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="1396" column="0" selection-start-line="1396" selection-start-column="0" selection-end-line="1396" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/scratch/MOD09GA.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1876725">
-          <caret line="147" column="68" selection-start-line="147" selection-start-column="68" selection-end-line="147" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetData/tests/land_cover_config_missing_setting.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16216215">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/glob.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/tests/land_cover_config_test_days.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/tests/land_cover_config_test_year.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/gdalconst.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/osgeo/scripts/gdal_merge.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.516827">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/gdal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/scratch/calling_other_procs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4538835">
-          <caret line="11" column="64" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetData/tests/land_cover_config_real_download.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38106796">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Microsoft/Windows/Temporary Internet Files/Content.Outlook/IWYKL7O5/ATT00001.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetData/scratch/odds_and_ends.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3552239">
-          <caret line="39" column="18" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetData/scratch/get_data_gerardo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.16575192">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/tests/land_cover_config_test.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61953354">
-          <caret line="25" column="3" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetData/src/LPDAAC_website.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32215744">
-          <caret line="13" column="46" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modis_config/src/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5947522">
-          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/src/Kernels.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.7419825">
-          <caret line="545" column="31" selection-start-line="545" selection-start-column="31" selection-end-line="545" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/tests/gdal_do_work_reference.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetData/tests/land_cover_config_test_download_locPosix.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="60" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetData/tests/land_cover_config_test_download_locWin.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.04157044">
-          <caret line="7" column="49" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetData/tests/land_cover_config_test_download.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64735514">
-          <caret line="27" column="60" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/unittest/case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="390" column="0" selection-start-line="390" selection-start-column="0" selection-end-line="390" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/nose/case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/nose/suite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="176" column="0" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/unittest/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/nose/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/noserunner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76443416">
-          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetData/src/webpageAccess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44745764">
-          <caret line="176" column="46" selection-start-line="176" selection-start-column="46" selection-end-line="176" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modis_config/land_cover_config.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33716476">
-          <caret line="18" column="90" selection-start-line="18" selection-start-column="90" selection-end-line="18" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/tests/land_cover_config_test_gdal.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0778626">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EA_model_design/Desktop.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EA_model_design/Data download.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetData/src/getData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="47" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="47" />
-          <folding>
-            <element signature="e#312#322#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modis_config/src/configuration.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="123" column="46" selection-start-line="123" selection-start-column="37" selection-end-line="123" selection-end-column="46" />
+        <state relative-caret-position="-153">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GetData/tests/test_main.py">
+    <entry file="file://$PROJECT_DIR$/../.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
-          <folding>
-            <element signature="e#418#431#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/tests/test_main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/src/sci_data_records.py">
+    <entry file="file://$PROJECT_DIR$/GetData/tests/git_test_MOD09GA.A2007364.h18v04.005.hdf.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/src/processMODISdata.py">
+    <entry file="file://$PROJECT_DIR$/GetData/scratch/MOD09GA.A2000072.h14v02.005.2008237034113.hdf.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="56" selection-start-line="50" selection-start-column="56" selection-end-line="50" selection-end-column="56" />
-          <folding>
-            <element signature="e#298#308#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/src/gdal_processing.py">
+    <entry file="file://$PROJECT_DIR$/.idea/Melodies.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="268" column="87" selection-start-line="268" selection-start-column="87" selection-end-line="268" selection-end-column="87" />
-          <folding>
-            <element signature="e#22#31#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessMOD/src/dataset_info.py">
+    <entry file="file://$PROJECT_DIR$/../../genson/bin/command.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44371942">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="21" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

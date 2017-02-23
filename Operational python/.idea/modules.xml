@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../genson/.idea/GenSON.iml" filepath="$PROJECT_DIR$/../../genson/.idea/GenSON.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Melodies.iml" filepath="$PROJECT_DIR$/.idea/Melodies.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../covjson-validator/.idea/Melodies_JSON.iml" filepath="$PROJECT_DIR$/../../covjson-validator/.idea/Melodies_JSON.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../melodies_json_jonblower/.idea/Melodies_JSON_jonblower.iml" filepath="$PROJECT_DIR$/../../melodies_json_jonblower/.idea/Melodies_JSON_jonblower.iml" />
     </modules>
   </component>
 </project>

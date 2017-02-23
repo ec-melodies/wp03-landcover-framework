@@ -7,7 +7,10 @@
       <sourceFolder url="file://$MODULE_DIR$/ProcessMOD" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/EA_model_design" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 2.7.3 (C:\Python27\python.exe)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="GenSON" />
+    <orderEntry type="module" module-name="Melodies_JSON_jonblower" />
+    <orderEntry type="module" module-name="Melodies_JSON" />
   </component>
 </module>
